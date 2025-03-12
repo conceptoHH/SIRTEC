@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace SIRTEC.PRESENTACION
 {
-    public partial class ModuloPrincipal : Form
+    public partial class ModuloDocentes : Form
     {
-        public ModuloPrincipal()
+        public ModuloDocentes()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ModuloDocentes moduloDocentes = new ModuloDocentes();
-            moduloDocentes.Show();
         }
     }
 }
