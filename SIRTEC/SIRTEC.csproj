@@ -47,7 +47,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DATOS\CONEXIONMAESTRA.cs" />
-    <Compile Include="PRESENTACION\Cordinador.cs" />
+    <Compile Include="PRESENTACION\AltaCoordinadorPrimeraVez.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PRESENTACION\AltaCoordinadorPrimeraVez.Designer.cs">
+      <DependentUpon>AltaCoordinadorPrimeraVez.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PRESENTACION\Cordinador.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PRESENTACION\Cordinador.Designer.cs">
       <DependentUpon>Cordinador.cs</DependentUpon>
     </Compile>
@@ -57,11 +65,15 @@
     <Compile Include="PRESENTACION\ctInscripcion.Designer.cs">
       <DependentUpon>ctInscripcion.cs</DependentUpon>
     </Compile>
-    <Compile Include="PRESENTACION\Login.cs" />
+    <Compile Include="PRESENTACION\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PRESENTACION\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="PRESENTACION\ModuloDocentes.cs" />
+    <Compile Include="PRESENTACION\ModuloDocentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PRESENTACION\ModuloDocentes.Designer.cs">
       <DependentUpon>ModuloDocentes.cs</DependentUpon>
     </Compile>
@@ -79,6 +91,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="PRESENTACION\AltaCoordinadorPrimeraVez.resx">
+      <DependentUpon>AltaCoordinadorPrimeraVez.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PRESENTACION\Cordinador.resx">
       <DependentUpon>Cordinador.cs</DependentUpon>
     </EmbeddedResource>
