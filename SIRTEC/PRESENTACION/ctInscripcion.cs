@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SIRTEC.PRESENTACION
 {
-    public partial class ModuloDocentes : Form
+    public partial class ctInscripcion : UserControl
     {
-        public ModuloDocentes()
+        public ctInscripcion()
         {
             InitializeComponent();
         }

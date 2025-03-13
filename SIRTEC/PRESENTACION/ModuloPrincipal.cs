@@ -19,8 +19,7 @@ namespace SIRTEC.PRESENTACION
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ModuloDocentes moduloDocentes = new ModuloDocentes();
-            moduloDocentes.Show();
+
         }
     }
 }

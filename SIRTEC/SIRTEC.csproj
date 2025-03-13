@@ -46,11 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PRESENTACION\ModuloDocentes.cs">
-      <SubType>Form</SubType>
+    <Compile Include="DATOS\CONEXIONMAESTRA.cs" />
+    <Compile Include="PRESENTACION\ctInscripcion.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="PRESENTACION\ModuloDocentes.Designer.cs">
-      <DependentUpon>ModuloDocentes.cs</DependentUpon>
+    <Compile Include="PRESENTACION\ctInscripcion.Designer.cs">
+      <DependentUpon>ctInscripcion.cs</DependentUpon>
     </Compile>
     <Compile Include="PRESENTACION\ModuloPrincipal.cs">
       <SubType>Form</SubType>
@@ -60,9 +61,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="PRESENTACION\ModuloDocentes.resx">
-      <DependentUpon>ModuloDocentes.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PRESENTACION\ModuloPrincipal.resx">
       <DependentUpon>ModuloPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,7 +87,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DATOS\" />
     <Folder Include="LOGICA\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
