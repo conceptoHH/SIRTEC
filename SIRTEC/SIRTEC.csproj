@@ -47,11 +47,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DATOS\CONEXIONMAESTRA.cs" />
+    <Compile Include="PRESENTACION\Cordinador.cs" />
+    <Compile Include="PRESENTACION\Cordinador.Designer.cs">
+      <DependentUpon>Cordinador.cs</DependentUpon>
+    </Compile>
     <Compile Include="PRESENTACION\ctInscripcion.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="PRESENTACION\ctInscripcion.Designer.cs">
       <DependentUpon>ctInscripcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PRESENTACION\Login.cs" />
+    <Compile Include="PRESENTACION\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PRESENTACION\ModuloDocentes.cs" />
+    <Compile Include="PRESENTACION\ModuloDocentes.Designer.cs">
+      <DependentUpon>ModuloDocentes.cs</DependentUpon>
     </Compile>
     <Compile Include="PRESENTACION\ModuloPrincipal.cs">
       <SubType>Form</SubType>
@@ -59,13 +71,31 @@
     <Compile Include="PRESENTACION\ModuloPrincipal.Designer.cs">
       <DependentUpon>ModuloPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="PRESENTACION\Reinscripcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PRESENTACION\Reinscripcion.Designer.cs">
+      <DependentUpon>Reinscripcion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="PRESENTACION\Cordinador.resx">
+      <DependentUpon>Cordinador.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PRESENTACION\ctInscripcion.resx">
       <DependentUpon>ctInscripcion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PRESENTACION\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PRESENTACION\ModuloDocentes.resx">
+      <DependentUpon>ModuloDocentes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PRESENTACION\ModuloPrincipal.resx">
       <DependentUpon>ModuloPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PRESENTACION\Reinscripcion.resx">
+      <DependentUpon>Reinscripcion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SIRTEC.PRESENTACION
 {
-    public partial class ModuloPrincipal : Form
+    public partial class ModuloDocentes : Form
     {
-        public ModuloPrincipal()
+        public ModuloDocentes()
         {
             InitializeComponent();
         }
@@ -22,12 +22,14 @@ namespace SIRTEC.PRESENTACION
 
         }
 
-        private void btnInsc_Click(object sender, EventArgs e)
+        private void label3_Click(object sender, EventArgs e)
         {
-            pnlPadre.Controls.Clear();
-            ctInscripcion ins = new ctInscripcion();
-            ins.Dock = DockStyle.Fill;
-            pnlPadre.Controls.Add(ins);
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
