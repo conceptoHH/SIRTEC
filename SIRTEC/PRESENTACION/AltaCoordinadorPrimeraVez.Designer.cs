@@ -30,18 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaCoordinadorPrimeraVez));
             this.pnlPadre = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRegistrarCoordinador = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtContrasenaCoord = new System.Windows.Forms.TextBox();
+            this.txtNomCoord = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Usuario = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.txtUsuarioCoord = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.pnlPadre.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -51,64 +51,92 @@
             // 
             this.pnlPadre.Controls.Add(this.label3);
             this.pnlPadre.Controls.Add(this.label1);
-            this.pnlPadre.Controls.Add(this.linkLabel2);
-            this.pnlPadre.Controls.Add(this.linkLabel1);
-            this.pnlPadre.Controls.Add(this.button1);
+            this.pnlPadre.Controls.Add(this.btnRegistrarCoordinador);
+            this.pnlPadre.Controls.Add(this.label4);
+            this.pnlPadre.Controls.Add(this.txtUsuarioCoord);
             this.pnlPadre.Controls.Add(this.label5);
-            this.pnlPadre.Controls.Add(this.textBox1);
-            this.pnlPadre.Controls.Add(this.Usuario);
+            this.pnlPadre.Controls.Add(this.txtContrasenaCoord);
+            this.pnlPadre.Controls.Add(this.txtNomCoord);
             this.pnlPadre.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPadre.Location = new System.Drawing.Point(0, 171);
+            this.pnlPadre.Location = new System.Drawing.Point(0, 139);
+            this.pnlPadre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPadre.Name = "pnlPadre";
-            this.pnlPadre.Size = new System.Drawing.Size(1568, 737);
+            this.pnlPadre.Size = new System.Drawing.Size(1176, 599);
             this.pnlPadre.TabIndex = 20;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label3.Location = new System.Drawing.Point(446, 76);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 25);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "Nombre:";
             // 
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("Bahnschrift Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1568, 66);
+            this.label1.Size = new System.Drawing.Size(1176, 54);
             this.label1.TabIndex = 23;
             this.label1.Text = "Alta de coordinador";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // linkLabel1
+            // btnRegistrarCoordinador
             // 
-            this.linkLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(271, 590);
-            this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(107, 16);
-            this.linkLabel1.TabIndex = 22;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Soporte Tecnico";
+            this.btnRegistrarCoordinador.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRegistrarCoordinador.AutoEllipsis = true;
+            this.btnRegistrarCoordinador.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRegistrarCoordinador.Font = new System.Drawing.Font("Bahnschrift Condensed", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarCoordinador.Location = new System.Drawing.Point(516, 463);
+            this.btnRegistrarCoordinador.Name = "btnRegistrarCoordinador";
+            this.btnRegistrarCoordinador.Size = new System.Drawing.Size(150, 71);
+            this.btnRegistrarCoordinador.TabIndex = 20;
+            this.btnRegistrarCoordinador.Text = "Registrar Coordinador";
+            this.btnRegistrarCoordinador.UseVisualStyleBackColor = true;
+            this.btnRegistrarCoordinador.Click += new System.EventHandler(this.btnRegistrarCoordinador_Click);
             // 
-            // button1
+            // label5
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.AutoEllipsis = true;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Bahnschrift Condensed", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(696, 456);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 52);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Iniciar sesion";
-            this.button1.UseVisualStyleBackColor = true;
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label5.Location = new System.Drawing.Point(444, 316);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(120, 25);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Contraseña:";
+            // 
+            // txtContrasenaCoord
+            // 
+            this.txtContrasenaCoord.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtContrasenaCoord.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContrasenaCoord.Location = new System.Drawing.Point(449, 374);
+            this.txtContrasenaCoord.Name = "txtContrasenaCoord";
+            this.txtContrasenaCoord.Size = new System.Drawing.Size(297, 29);
+            this.txtContrasenaCoord.TabIndex = 17;
+            // 
+            // txtNomCoord
+            // 
+            this.txtNomCoord.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtNomCoord.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomCoord.Location = new System.Drawing.Point(449, 134);
+            this.txtNomCoord.Name = "txtNomCoord";
+            this.txtNomCoord.Size = new System.Drawing.Size(297, 29);
+            this.txtNomCoord.TabIndex = 16;
+            this.txtNomCoord.Tag = "";
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(157)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 908);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Location = new System.Drawing.Point(0, 738);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1568, 33);
+            this.panel2.Size = new System.Drawing.Size(1176, 27);
             this.panel2.TabIndex = 19;
             // 
             // panel1
@@ -118,9 +146,8 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1568, 171);
+            this.panel1.Size = new System.Drawing.Size(1176, 139);
             this.panel1.TabIndex = 18;
             // 
             // label2
@@ -129,10 +156,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.Font = new System.Drawing.Font("Bahnschrift Condensed", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(327, 30);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(245, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1006, 80);
+            this.label2.Size = new System.Drawing.Size(754, 65);
             this.label2.TabIndex = 2;
             this.label2.Text = "Técnologico Nacional de México";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -143,80 +169,43 @@
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(213, 171);
+            this.pictureBox1.Size = new System.Drawing.Size(160, 139);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // Usuario
+            // txtUsuarioCoord
             // 
-            this.Usuario.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Usuario.Location = new System.Drawing.Point(599, 126);
-            this.Usuario.Margin = new System.Windows.Forms.Padding(4);
-            this.Usuario.Multiline = true;
-            this.Usuario.Name = "Usuario";
-            this.Usuario.Size = new System.Drawing.Size(395, 66);
-            this.Usuario.TabIndex = 16;
-            this.Usuario.Tag = "";
-            this.Usuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUsuarioCoord.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtUsuarioCoord.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuarioCoord.Location = new System.Drawing.Point(449, 254);
+            this.txtUsuarioCoord.Name = "txtUsuarioCoord";
+            this.txtUsuarioCoord.Size = new System.Drawing.Size(297, 29);
+            this.txtUsuarioCoord.TabIndex = 17;
             // 
-            // textBox1
+            // label4
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Location = new System.Drawing.Point(599, 319);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(395, 66);
-            this.textBox1.TabIndex = 17;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label5.Location = new System.Drawing.Point(594, 286);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(143, 29);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Contraseña";
-            // 
-            // linkLabel2
-            // 
-            this.linkLabel2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(596, 389);
-            this.linkLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(182, 16);
-            this.linkLabel2.TabIndex = 21;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Nuevo Ingreso? Da click aqui";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label3.Location = new System.Drawing.Point(594, 93);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 29);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "Nombre";
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label4.Location = new System.Drawing.Point(444, 196);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 25);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Usuario:";
             // 
             // AltaCoordinadorPrimeraVez
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1568, 941);
+            this.ClientSize = new System.Drawing.Size(1176, 765);
             this.Controls.Add(this.pnlPadre);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AltaCoordinadorPrimeraVez";
             this.Text = "AltaCoordinadorPrimeraVez";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.pnlPadre.ResumeLayout(false);
             this.pnlPadre.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -229,16 +218,16 @@
 
         private System.Windows.Forms.Panel pnlPadre;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRegistrarCoordinador;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox Usuario;
+        private System.Windows.Forms.TextBox txtContrasenaCoord;
+        private System.Windows.Forms.TextBox txtNomCoord;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtUsuarioCoord;
     }
 }

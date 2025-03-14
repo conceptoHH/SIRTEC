@@ -10,7 +10,8 @@ namespace SIRTEC.DATOS
 {
     internal class CONEXIONMAESTRA
     {
-        public static string conexion = "Server=KNCPT/SQLEXPRESS;Database=SIRTEC;Integrated Security=True;";
+        static string name = Environment.MachineName;
+        public static string conexion = $@"Server={name}\SQLEXPRESS; Initial Catalog=SIRTEC;Integrated Security=True;";
         public static SqlConnection conectar = new SqlConnection(conexion);
         public static void abrir()
         {
@@ -26,6 +27,5 @@ namespace SIRTEC.DATOS
                 conectar.Close();
             }
         }
-
     }
 }

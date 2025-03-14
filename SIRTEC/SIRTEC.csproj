@@ -47,6 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DATOS\CONEXIONMAESTRA.cs" />
+    <Compile Include="DATOS\Dusuarios.cs" />
+    <Compile Include="LOGICA\Lcoordinador.cs" />
+    <Compile Include="LOGICA\Lusuarios.cs" />
     <Compile Include="PRESENTACION\AltaCoordinadorPrimeraVez.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,8 +137,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="LOGICA\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
