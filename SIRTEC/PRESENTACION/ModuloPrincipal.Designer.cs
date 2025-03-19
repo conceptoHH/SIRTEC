@@ -51,7 +51,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1579, 171);
             this.panel1.TabIndex = 0;
@@ -67,7 +67,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1017, 80);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Técnologico Nacional de México";
+            this.label1.Text = "Tecnológico Nacional de México";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
@@ -76,7 +76,7 @@
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(213, 171);
             this.pictureBox1.TabIndex = 1;
@@ -87,7 +87,7 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(157)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 1027);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1579, 33);
             this.panel2.TabIndex = 1;
@@ -101,7 +101,7 @@
             this.pnlPadre.Controls.Add(this.btnCoord);
             this.pnlPadre.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlPadre.Location = new System.Drawing.Point(0, 171);
-            this.pnlPadre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlPadre.Margin = new System.Windows.Forms.Padding(4);
             this.pnlPadre.Name = "pnlPadre";
             this.pnlPadre.Size = new System.Drawing.Size(1579, 856);
             this.pnlPadre.TabIndex = 4;
@@ -115,7 +115,7 @@
             this.btnReinsc.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnReinsc.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReinsc.Location = new System.Drawing.Point(556, 655);
-            this.btnReinsc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReinsc.Margin = new System.Windows.Forms.Padding(4);
             this.btnReinsc.Name = "btnReinsc";
             this.btnReinsc.Size = new System.Drawing.Size(500, 112);
             this.btnReinsc.TabIndex = 8;
@@ -144,7 +144,7 @@
             this.btnDocentes.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnDocentes.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDocentes.Location = new System.Drawing.Point(556, 164);
-            this.btnDocentes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDocentes.Margin = new System.Windows.Forms.Padding(4);
             this.btnDocentes.Name = "btnDocentes";
             this.btnDocentes.Size = new System.Drawing.Size(500, 112);
             this.btnDocentes.TabIndex = 0;
@@ -161,7 +161,7 @@
             this.btnInsc.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnInsc.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInsc.Location = new System.Drawing.Point(556, 492);
-            this.btnInsc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnInsc.Margin = new System.Windows.Forms.Padding(4);
             this.btnInsc.Name = "btnInsc";
             this.btnInsc.Size = new System.Drawing.Size(500, 112);
             this.btnInsc.TabIndex = 6;
@@ -178,7 +178,7 @@
             this.btnCoord.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnCoord.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCoord.Location = new System.Drawing.Point(556, 326);
-            this.btnCoord.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCoord.Margin = new System.Windows.Forms.Padding(4);
             this.btnCoord.Name = "btnCoord";
             this.btnCoord.Size = new System.Drawing.Size(500, 112);
             this.btnCoord.TabIndex = 4;
@@ -194,7 +194,7 @@
             this.Controls.Add(this.pnlPadre);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ModuloPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModuloPrincipal";

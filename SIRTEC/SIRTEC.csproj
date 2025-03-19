@@ -49,6 +49,7 @@
     <Compile Include="DATOS\CONEXIONMAESTRA.cs" />
     <Compile Include="DATOS\Dusuarios.cs" />
     <Compile Include="LOGICA\Lcoordinador.cs" />
+    <Compile Include="LOGICA\Ldocumentos.cs" />
     <Compile Include="LOGICA\Lusuarios.cs" />
     <Compile Include="PRESENTACION\AltaCoordinadorPrimeraVez.cs">
       <SubType>Form</SubType>
@@ -85,6 +86,12 @@
     </Compile>
     <Compile Include="PRESENTACION\ModuloPrincipal.Designer.cs">
       <DependentUpon>ModuloPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PRESENTACION\PRES Coordinador\ctlAltaHorario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PRESENTACION\PRES Coordinador\ctlAltaHorario.Designer.cs">
+      <DependentUpon>ctlAltaHorario.cs</DependentUpon>
     </Compile>
     <Compile Include="PRESENTACION\Reinscripcion.cs">
       <SubType>Form</SubType>
