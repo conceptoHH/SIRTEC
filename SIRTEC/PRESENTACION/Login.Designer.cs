@@ -57,7 +57,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(766, 65);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Técnologico Nacional de México";
+            this.label2.Text = "Tecnológico Nacional de México";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
@@ -103,7 +103,7 @@
             this.pnlPadre.Controls.Add(this.txtUsuario);
             this.pnlPadre.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlPadre.Location = new System.Drawing.Point(0, 139);
-            this.pnlPadre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlPadre.Margin = new System.Windows.Forms.Padding(2);
             this.pnlPadre.Name = "pnlPadre";
             this.pnlPadre.Size = new System.Drawing.Size(1187, 696);
             this.pnlPadre.TabIndex = 17;

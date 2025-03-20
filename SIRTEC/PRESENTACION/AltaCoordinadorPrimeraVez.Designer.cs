@@ -33,6 +33,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnRegistrarCoordinador = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtUsuarioCoord = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtContrasenaCoord = new System.Windows.Forms.TextBox();
             this.txtNomCoord = new System.Windows.Forms.TextBox();
@@ -40,8 +42,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txtUsuarioCoord = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.pnlPadre.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -59,7 +59,7 @@
             this.pnlPadre.Controls.Add(this.txtNomCoord);
             this.pnlPadre.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlPadre.Location = new System.Drawing.Point(0, 139);
-            this.pnlPadre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlPadre.Margin = new System.Windows.Forms.Padding(2);
             this.pnlPadre.Name = "pnlPadre";
             this.pnlPadre.Size = new System.Drawing.Size(1176, 599);
             this.pnlPadre.TabIndex = 20;
@@ -99,6 +99,26 @@
             this.btnRegistrarCoordinador.Text = "Registrar Coordinador";
             this.btnRegistrarCoordinador.UseVisualStyleBackColor = true;
             this.btnRegistrarCoordinador.Click += new System.EventHandler(this.btnRegistrarCoordinador_Click);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label4.Location = new System.Drawing.Point(444, 196);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 25);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Usuario:";
+            // 
+            // txtUsuarioCoord
+            // 
+            this.txtUsuarioCoord.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtUsuarioCoord.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuarioCoord.Location = new System.Drawing.Point(449, 254);
+            this.txtUsuarioCoord.Name = "txtUsuarioCoord";
+            this.txtUsuarioCoord.Size = new System.Drawing.Size(297, 29);
+            this.txtUsuarioCoord.TabIndex = 17;
             // 
             // label5
             // 
@@ -160,7 +180,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(754, 65);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Técnologico Nacional de México";
+            this.label2.Text = "Tecnológico Nacional de México";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
@@ -174,26 +194,6 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // txtUsuarioCoord
-            // 
-            this.txtUsuarioCoord.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtUsuarioCoord.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuarioCoord.Location = new System.Drawing.Point(449, 254);
-            this.txtUsuarioCoord.Name = "txtUsuarioCoord";
-            this.txtUsuarioCoord.Size = new System.Drawing.Size(297, 29);
-            this.txtUsuarioCoord.TabIndex = 17;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label4.Location = new System.Drawing.Point(444, 196);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 25);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Usuario:";
-            // 
             // AltaCoordinadorPrimeraVez
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,7 +202,7 @@
             this.Controls.Add(this.pnlPadre);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AltaCoordinadorPrimeraVez";
             this.Text = "AltaCoordinadorPrimeraVez";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
