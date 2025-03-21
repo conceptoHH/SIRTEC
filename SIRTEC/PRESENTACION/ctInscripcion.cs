@@ -11,16 +11,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+// Agregar los using para iText 7
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
+using iText.Kernel.Colors;
+using iText.IO.Font.Constants;
+using iText.Kernel.Font;
+using iText.Layout.Borders;
+using Color = iText.Kernel.Colors.Color;
 
 namespace SIRTEC.PRESENTACION
 {
-    public partial class ctInscripcion : UserControl
+    public partial class ctlAltaDocente : UserControl
     {
         int semestre = 1;
         // Lista para almacenar documentos seleccionados temporalmente
         private List<Ldocumentos> documentosSeleccionados = new List<Ldocumentos>();
 
-        public ctInscripcion()
+        public ctlAltaDocente()
         {
             InitializeComponent();
             // Configurar el DataGridView
@@ -124,6 +134,24 @@ namespace SIRTEC.PRESENTACION
             {
                 MessageBox.Show("No hay documentos para guardar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
+            }
+            // Dentro de btnGuardar_Click, antes de la inserción
+            if (!ExisteSemestre(semestre))
+            {
+                // Si el semestre no existe, intentamos crearlo
+                int idSemestreCreado = CrearSemestre(semestre);
+                if (idSemestreCreado == 0)
+                {
+                    MessageBox.Show("El semestre 1 no existe y no se pudo crear. Por favor, contacte al administrador.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    semestre = idSemestreCreado; // Usar el ID del semestre creado
+                    MessageBox.Show($"Se ha creado automáticamente el semestre {semestre}.",
+                        "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
 
             if (lbTipoDocu.SelectedIndex == -1)
@@ -231,12 +259,21 @@ namespace SIRTEC.PRESENTACION
                 return;
             }
 
-            // Dentro de btnGuardar_Click, antes de la inserción
+            // Verificar si existe el semestre
             if (!ExisteSemestre(semestre))
             {
-                MessageBox.Show("El semestre 1 no está configurado en el sistema. Por favor, contacte al administrador.",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                // Si el semestre no existe, intentamos crearlo
+                int idSemestreCreado = CrearSemestre(semestre);
+                if (idSemestreCreado == 0)
+                {
+                    MessageBox.Show("El semestre 1 no existe y no se pudo crear. Por favor, contacte al administrador.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    semestre = idSemestreCreado; // Usar el ID del semestre creado
+                }
             }
 
             try
@@ -250,39 +287,101 @@ namespace SIRTEC.PRESENTACION
                 // Crear la consulta para insertar el alumno
                 using (SqlConnection conn = new SqlConnection(CONEXIONMAESTRA.conexion))
                 {
-
                     conn.Open();
-                    string query = @"INSERT INTO Alumnos (id_alumno, nombre, a_paterno, a_materno, e_mail, f_nacimiento, n_control, id_semestre)
-                          VALUES (@id_alumno, @nombre, @a_paterno, @a_materno, @e_mail, @f_nacimiento, @n_control, @id_semestre)";
 
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    // Iniciar una transacción para asegurar integridad
+                    using (SqlTransaction transaction = conn.BeginTransaction())
                     {
-                        cmd.Parameters.AddWithValue("@id_alumno", idAlumno);
-                        cmd.Parameters.AddWithValue("@nombre", txtNombre.Text);
-                        cmd.Parameters.AddWithValue("@a_paterno", txtApaterno.Text);
+                        try
+                        {
+                            // Insertar alumno
+                            string query = @"INSERT INTO Alumnos (id_alumno, nombre, a_paterno, a_materno, e_mail, f_nacimiento, n_control, id_semestre)
+                                      VALUES (@id_alumno, @nombre, @a_paterno, @a_materno, @e_mail, @f_nacimiento, @n_control, @id_semestre)";
 
-                        cmd.Parameters.AddWithValue("@a_materno", txtAmaterno.Text);
-                        cmd.Parameters.AddWithValue("@e_mail", txtEmail.Text);
-                        cmd.Parameters.AddWithValue("@f_nacimiento", dtFnacimiento.Value);
-                        cmd.Parameters.AddWithValue("@n_control", numeroControl);
-                        cmd.Parameters.AddWithValue("@id_semestre", semestre);
+                            using (SqlCommand cmd = new SqlCommand(query, conn, transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@id_alumno", idAlumno);
+                                cmd.Parameters.AddWithValue("@nombre", txtNombre.Text);
+                                cmd.Parameters.AddWithValue("@a_paterno", txtApaterno.Text);
+                                cmd.Parameters.AddWithValue("@a_materno", txtAmaterno.Text);
+                                cmd.Parameters.AddWithValue("@e_mail", txtEmail.Text);
+                                cmd.Parameters.AddWithValue("@f_nacimiento", dtFnacimiento.Value);
+                                cmd.Parameters.AddWithValue("@n_control", numeroControl);
+                                cmd.Parameters.AddWithValue("@id_semestre", semestre);
 
-                        cmd.ExecuteNonQuery();
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            // Crear un usuario para el alumno
+                            // Obtener el siguiente ID de usuario
+                            int idUsuario = 1;
+                            string queryId = "SELECT ISNULL(MAX(id_usuarios), 0) + 1 FROM Usuarios";
+                            using (SqlCommand cmdId = new SqlCommand(queryId, conn, transaction))
+                            {
+                                idUsuario = Convert.ToInt32(cmdId.ExecuteScalar());
+                            }
+
+                            // Insertar usuario
+                            string queryUsuario = @"INSERT INTO Usuarios (id_usuarios, tipo_usuario, username, password, id_alumno, id_docente, id_coordinador)
+                                       VALUES (@id_usuarios, 'alumno', @user, @password, @id_alumno, NULL, NULL)";
+
+                            using (SqlCommand cmd = new SqlCommand(queryUsuario, conn, transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@id_usuarios", idUsuario);
+                                cmd.Parameters.AddWithValue("@user", numeroControl);
+                                cmd.Parameters.AddWithValue("@password", numeroControl);
+                                cmd.Parameters.AddWithValue("@id_alumno", idAlumno);
+
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            // Asociar documentos al alumno
+                            string queryAsociarDocs = @"UPDATE Documentos
+                                                     SET id_alumno = @id_alumno
+                                                     WHERE id_alumno IS NULL";
+
+                            using (SqlCommand cmd = new SqlCommand(queryAsociarDocs, conn, transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@id_alumno", idAlumno);
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            // Confirmar la transacción
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            // Revertir la transacción en caso de error
+                            transaction.Rollback();
+                            throw new Exception($"Error en la transacción: {ex.Message}");
+                        }
                     }
 
-                    // Crear un usuario para el alumno usando el número de control
-                    CrearUsuarioParaAlumno(idAlumno, numeroControl.ToString(), conn);
+                    // Actualizar la vista de documentos
+                    CargarDocumentos();
+
+                    // Asignar horario al alumno (después de la transacción para no afectarla)
+                    bool horarioAsignado = AsignarHorarioAlumno(idAlumno, semestre);
+
+                    MessageBox.Show($"¡Inscripción completada con éxito!\nNúmero de Control: {numeroControl}\n" +
+                                   $"Este número será su usuario y contraseña para acceder al sistema.",
+                                   "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Si se asignó el horario correctamente, ofrecer ver/descargar el horario
+                    if (horarioAsignado)
+                    {
+                        DialogResult result = MessageBox.Show("¿Desea ver y descargar su horario?",
+                            "Horario disponible", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            MostrarVistaPrevia(idAlumno, numeroControl);
+                        }
+                    }
+
+                    // Limpiar los campos del formulario
+                    LimpiarFormulario();
                 }
-
-                // Asociar los documentos subidos al alumno
-                AsociarDocumentosAAlumno(idAlumno);
-
-                MessageBox.Show($"¡Inscripción completada con éxito!\nNúmero de Control: {numeroControl}\n" +
-                               $"Este número será su usuario y contraseña para acceder al sistema.",
-                               "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Limpiar los campos del formulario
-                LimpiarFormulario();
             }
             catch (Exception ex)
             {
@@ -403,22 +502,341 @@ namespace SIRTEC.PRESENTACION
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            // Buscar el formulario padre que contiene este control
-            Form parentForm = this.FindForm();
-
-            // Crear una nueva instancia del formulario Login
-            Login login = new Login();
-
-            // Mostrar el formulario de login
-            login.Show();
-
-            // Ocultar o cerrar el formulario padre si existe
-            if (parentForm != null)
+            // Simplemente eliminar este control del panel padre
+            if (this.Parent != null)
             {
-                parentForm.Hide();
+                this.Parent.Controls.Remove(this);
+                this.Dispose();
             }
-            // No es necesario crear y eliminar una instancia de este control
-            // ya que el control actual se eliminará cuando se cierre el formulario
+        }
+        /// <summary>
+        /// Crea un nuevo semestre en la base de datos si no existe.
+        /// </summary>
+        /// <param name="numeroSemestre">Número del semestre a crear.</param>
+        /// <returns>ID del semestre creado o 0 si hubo un error.</returns>
+        private int CrearSemestre(int numeroSemestre)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(CONEXIONMAESTRA.conexion))
+                {
+                    conn.Open();
+
+                    // Primero verificamos si ya existe
+                    string queryVerificar = "SELECT id_semestre FROM Semestre WHERE n_semestre = @n_semestre";
+                    using (SqlCommand cmdVerificar = new SqlCommand(queryVerificar, conn))
+                    {
+                        cmdVerificar.Parameters.AddWithValue("@n_semestre", numeroSemestre);
+                        object result = cmdVerificar.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            return Convert.ToInt32(result); // Ya existe, devolver el ID
+                        }
+                    }
+
+                    // Si no existe, lo creamos
+                    string queryInsertar = @"INSERT INTO Semestre (n_semestre, periodo) 
+                                       VALUES (@n_semestre, @periodo);
+                                       SELECT SCOPE_IDENTITY();";
+
+                    using (SqlCommand cmdInsertar = new SqlCommand(queryInsertar, conn))
+                    {
+                        cmdInsertar.Parameters.AddWithValue("@n_semestre", numeroSemestre);
+                        cmdInsertar.Parameters.AddWithValue("@periodo", DateTime.Now); // Usar fecha actual como periodo
+
+                        return Convert.ToInt32(cmdInsertar.ExecuteScalar());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al crear el semestre: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Asigna automáticamente las materias del paquete 1 al alumno recién inscrito.
+        /// </summary>
+        /// <param name="idAlumno">ID del alumno inscrito.</param>
+        /// <param name="idSemestre">ID del semestre del alumno.</param>
+        /// <returns>True si se asignó correctamente, False en caso contrario.</returns>
+        private bool AsignarHorarioAlumno(int idAlumno, int idSemestre)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(CONEXIONMAESTRA.conexion))
+                {
+                    conn.Open();
+
+                    // Obtener las materias del paquete 1 para el semestre indicado
+                    string queryMaterias = @"
+                        SELECT M.id_materia 
+                        FROM Materias M
+                        INNER JOIN Paquetes P ON M.id_materia = P.id_materia
+                        WHERE P.n_paquete = 1 AND P.id_semestre = @id_semestre";
+
+                    List<int> materiasIds = new List<int>();
+
+                    using (SqlCommand cmd = new SqlCommand(queryMaterias, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id_semestre", idSemestre);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                materiasIds.Add(Convert.ToInt32(reader["id_materia"]));
+                            }
+                        }
+                    }
+
+                    if (materiasIds.Count == 0)
+                    {
+                        MessageBox.Show("No se encontraron materias asignadas al paquete 1 para el semestre actual.",
+                            "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
+                    }
+
+                    // Asignar cada materia al alumno en la tabla Horarios
+                    foreach (int idMateria in materiasIds)
+                    {
+                        string queryInsertarHorario = @"
+                            INSERT INTO Horarios (id_materia, id_alumno, id_semestre, estado)
+                            VALUES (@id_materia, @id_alumno, @id_semestre, 'inscrita')";
+
+                        using (SqlCommand cmd = new SqlCommand(queryInsertarHorario, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@id_materia", idMateria);
+                            cmd.Parameters.AddWithValue("@id_alumno", idAlumno);
+                            cmd.Parameters.AddWithValue("@id_semestre", idSemestre);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al asignar horario: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Muestra una vista previa del horario del alumno y permite descargarlo.
+        /// </summary>
+        /// <param name="idAlumno">ID del alumno.</param>
+        /// <param name="numeroControl">Número de control del alumno.</param>
+        private void MostrarVistaPrevia(int idAlumno, int numeroControl)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(CONEXIONMAESTRA.conexion))
+                {
+                    conn.Open();
+
+                    // Obtener información del alumno
+                    string queryAlumno = @"
+                        SELECT A.nombre, A.a_paterno, A.a_materno, S.n_semestre
+                        FROM Alumnos A
+                        INNER JOIN Semestre S ON A.id_semestre = S.id_semestre
+                        WHERE A.id_alumno = @id_alumno";
+
+                    string nombreCompleto = "";
+                    int numSemestre = 0;
+
+                    using (SqlCommand cmd = new SqlCommand(queryAlumno, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id_alumno", idAlumno);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                nombreCompleto = $"{reader["nombre"]} {reader["a_paterno"]} {reader["a_materno"]}";
+                                numSemestre = Convert.ToInt32(reader["n_semestre"]);
+                            }
+                        }
+                    }
+
+                    // Obtener el horario del alumno
+                    string queryHorario = @"
+                        SELECT M.n_materia, M.hora, M.aula, D.nombre AS docente
+                        FROM Horarios H
+                        INNER JOIN Materias M ON H.id_materia = M.id_materia
+                        LEFT JOIN Docentes D ON M.id_docente = D.id_docente
+                        WHERE H.id_alumno = @id_alumno
+                        ORDER BY M.hora";
+
+                    DataTable dtHorario = new DataTable();
+                    using (SqlCommand cmd = new SqlCommand(queryHorario, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id_alumno", idAlumno);
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        adapter.Fill(dtHorario);
+                    }
+
+                    if (dtHorario.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No se encontraron materias asignadas al alumno.",
+                            "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // Crear un formulario para mostrar la vista previa
+                    Form formVistaPrevia = new Form();
+                    formVistaPrevia.Text = "Vista Previa de Horario";
+                    formVistaPrevia.Size = new Size(800, 600);
+                    formVistaPrevia.StartPosition = FormStartPosition.CenterScreen;
+                    formVistaPrevia.MinimizeBox = false;
+                    formVistaPrevia.MaximizeBox = false;
+                    formVistaPrevia.FormBorderStyle = FormBorderStyle.FixedDialog;
+
+                    // Añadir un panel con scroll
+                    Panel panel = new Panel();
+                    panel.Dock = DockStyle.Fill;
+                    panel.AutoScroll = true;
+                    formVistaPrevia.Controls.Add(panel);
+
+                    // Añadir etiqueta con información del alumno
+                    Label lblInfo = new Label();
+                    lblInfo.Text = $"Alumno: {nombreCompleto}\r\nNúmero de Control: {numeroControl}\r\nSemestre: {numSemestre}";
+                    lblInfo.Font = new Font("Arial", 12, FontStyle.Bold);
+                    lblInfo.AutoSize = true;
+                    lblInfo.Location = new Point(20, 20);
+                    panel.Controls.Add(lblInfo);
+
+                    // Añadir DataGridView con el horario
+                    DataGridView dgvHorario = new DataGridView();
+                    dgvHorario.DataSource = dtHorario;
+                    dgvHorario.Size = new Size(750, 400);
+                    dgvHorario.Location = new Point(20, 100);
+                    dgvHorario.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dgvHorario.ReadOnly = true;
+                    dgvHorario.AllowUserToAddRows = false;
+                    dgvHorario.AllowUserToDeleteRows = false;
+                    dgvHorario.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    panel.Controls.Add(dgvHorario);
+
+                    // Añadir botón para generar PDF
+                    Button btnGenerarPDF = new Button();
+                    btnGenerarPDF.Text = "Descargar PDF";
+                    btnGenerarPDF.Size = new Size(150, 40);
+                    btnGenerarPDF.Location = new Point(20, 510);
+                    btnGenerarPDF.Click += (sender, e) => GenerarPDF(dtHorario, nombreCompleto, numeroControl, numSemestre);
+                    panel.Controls.Add(btnGenerarPDF);
+
+                    // Mostrar el formulario
+                    formVistaPrevia.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al mostrar vista previa: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Genera un archivo PDF con el horario del alumno utilizando iText 7.
+        /// </summary>
+        /// <param name="dtHorario">DataTable con la información del horario.</param>
+        /// <param name="nombreAlumno">Nombre completo del alumno.</param>
+        /// <param name="numeroControl">Número de control del alumno.</param>
+        /// <param name="numSemestre">Número de semestre.</param>
+        private void GenerarPDF(DataTable dtHorario, string nombreAlumno, int numeroControl, int numSemestre)
+        {
+            try
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Archivo PDF|*.pdf";
+                saveFileDialog.Title = "Guardar horario como PDF";
+                saveFileDialog.FileName = $"Horario_{numeroControl}.pdf";
+
+                if (saveFileDialog.ShowDialog() != DialogResult.OK)
+                    return;
+
+                // Crear el documento PDF usando iText 7
+                using (FileStream fs = new FileStream(saveFileDialog.FileName, FileMode.Create))
+                {
+                    // Inicializar el escritor y el documento PDF
+                    PdfWriter writer = new PdfWriter(fs);
+                    PdfDocument pdf = new PdfDocument(writer);
+                    Document document = new Document(pdf);
+
+                    // Título del documento
+                    Paragraph titulo = new Paragraph("HORARIO DE CLASES")
+                        .SetTextAlignment(TextAlignment.CENTER)
+                        .SetFontSize(18);
+                    document.Add(titulo);
+
+                    // Información del alumno
+                    document.Add(new Paragraph("\n"));
+                    document.Add(new Paragraph($"Alumno: {nombreAlumno}").SetFontSize(12));
+                    document.Add(new Paragraph($"Número de Control: {numeroControl}").SetFontSize(12));
+                    document.Add(new Paragraph($"Semestre: {numSemestre}").SetFontSize(12));
+                    document.Add(new Paragraph($"Fecha de impresión: {DateTime.Now.ToString("dd/MM/yyyy")}").SetFontSize(12));
+                    document.Add(new Paragraph("\n"));
+
+                    // Crear tabla para el horario
+                    Table table = new Table(UnitValue.CreatePercentArray(new float[] { 35, 20, 15, 30 }))
+                        .UseAllAvailableWidth();
+
+                    // Encabezados de la tabla
+                    Cell cellMateria = new Cell().Add(new Paragraph("Materia"));
+                    Cell cellHora = new Cell().Add(new Paragraph("Hora"));
+                    Cell cellAula = new Cell().Add(new Paragraph("Aula"));
+                    Cell cellDocente = new Cell().Add(new Paragraph("Docente"));
+
+                    // Estilo para las celdas de encabezado
+                    Color headerBgColor = new DeviceRgb(220, 220, 220);
+                    cellMateria.SetBackgroundColor(headerBgColor);
+                    cellHora.SetBackgroundColor(headerBgColor);
+                    cellAula.SetBackgroundColor(headerBgColor);
+                    cellDocente.SetBackgroundColor(headerBgColor);
+
+                    // Añadir encabezados a la tabla
+                    table.AddHeaderCell(cellMateria);
+                    table.AddHeaderCell(cellHora);
+                    table.AddHeaderCell(cellAula);
+                    table.AddHeaderCell(cellDocente);
+
+                    // Añadir filas de datos
+                    foreach (DataRow row in dtHorario.Rows)
+                    {
+                        table.AddCell(new Cell().Add(new Paragraph(row["n_materia"].ToString())));
+                        table.AddCell(new Cell().Add(new Paragraph(row["hora"].ToString())));
+                        table.AddCell(new Cell().Add(new Paragraph(row["aula"].ToString())));
+                        table.AddCell(new Cell().Add(new Paragraph(row["docente"].ToString())));
+                    }
+
+                    document.Add(table);
+
+                    // Pie de página
+                    document.Add(new Paragraph("\n"));
+                    Paragraph piePagina = new Paragraph("Este documento es una representación oficial del horario escolar. Guárdelo para futuras referencias.")
+                        .SetTextAlignment(TextAlignment.CENTER)
+                        .SetFontSize(10);
+                    document.Add(piePagina);
+
+                    // Cerrar el documento
+                    document.Close();
+                }
+
+                MessageBox.Show($"El horario se ha guardado correctamente en:\n{saveFileDialog.FileName}",
+                    "PDF Generado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Abrir el archivo PDF generado
+                System.Diagnostics.Process.Start(saveFileDialog.FileName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al generar el PDF: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

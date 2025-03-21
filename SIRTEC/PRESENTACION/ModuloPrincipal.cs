@@ -24,10 +24,32 @@ namespace SIRTEC.PRESENTACION
 
         private void btnInsc_Click(object sender, EventArgs e)
         {
-            pnlPadre.Controls.Clear();
-            ctInscripcion ins = new ctInscripcion();
+            // Ocultar los controles actuales del panel padre
+            foreach (Control control in pnlPadre.Controls)
+            {
+                control.Visible = false;
+            }
+
+            // Crear una nueva instancia del control de inscripción
+            ctlAltaDocente ins = new ctlAltaDocente();
             ins.Dock = DockStyle.Fill;
+
+            // Agregar el control al panel
             pnlPadre.Controls.Add(ins);
+
+            // Asegurarse de que el botón "Volver" en ctInscripcion funcione correctamente
+            // Para esto, podemos manejar el evento Disposed del control
+            ins.Disposed += (s, args) =>
+            {
+                // Cuando el control se elimine, mostrar de nuevo todos los controles del login
+                foreach (Control control in pnlPadre.Controls)
+                {
+                    if (control != ins)
+                    {
+                        control.Visible = true;
+                    }
+                }
+            };
         }
     }
 }

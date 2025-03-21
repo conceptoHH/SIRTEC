@@ -102,12 +102,11 @@ namespace SIRTEC.PRESENTACION.PRES_Coordinador
                 idDocente = Convert.ToInt32(cmdMaxId.ExecuteScalar());
 
                 // Insertamos el nuevo coordinador
-                string consultaCoordinador = "INSERT INTO Docentes(id_docente, nombre, habilitado) " +
-                                            "VALUES (@id_docente, @nombre, @habilitado)";
+                string consultaCoordinador = "INSERT INTO Docentes(nombre, habilitado) " +
+                                            "VALUES (@nombre, @habilitado)";
 
                 using (SqlCommand cmdCoordinador = new SqlCommand(consultaCoordinador, CONEXIONMAESTRA.conectar))
                 {
-                    cmdCoordinador.Parameters.AddWithValue("@id_docente", idDocente);
                     cmdCoordinador.Parameters.AddWithValue("@nombre", txtNomDoc.Text);
                     cmdCoordinador.Parameters.AddWithValue("@habilitado", habilitado);
                     cmdCoordinador.ExecuteNonQuery();
@@ -143,6 +142,16 @@ namespace SIRTEC.PRESENTACION.PRES_Coordinador
             }
 
             return registroExitoso;
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            // Simplemente eliminar este control del panel padre
+            if (this.Parent != null)
+            {
+                this.Parent.Controls.Remove(this);
+                this.Dispose();
+            }
         }
     }
 }

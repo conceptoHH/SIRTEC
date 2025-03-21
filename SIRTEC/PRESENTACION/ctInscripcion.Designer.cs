@@ -1,6 +1,6 @@
 ﻿namespace SIRTEC.PRESENTACION
 {
-    partial class ctInscripcion
+    partial class ctlAltaDocente
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -73,7 +73,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(677, 23);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Completa el siguiente formulario para realizar tu proceso de reinscripcion";
+            this.label2.Text = "Completa el siguiente formulario para realizar tu proceso de inscripcion";
             // 
             // txtNombre
             // 
@@ -181,7 +181,7 @@
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Bahnschrift Condensed", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Location = new System.Drawing.Point(55, 345);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(194, 56);
             this.btnGuardar.TabIndex = 6;
@@ -194,7 +194,7 @@
             this.btnSubirDoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnSubirDoc.Font = new System.Drawing.Font("Bahnschrift Condensed", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubirDoc.Location = new System.Drawing.Point(427, 345);
-            this.btnSubirDoc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSubirDoc.Margin = new System.Windows.Forms.Padding(2);
             this.btnSubirDoc.Name = "btnSubirDoc";
             this.btnSubirDoc.Size = new System.Drawing.Size(195, 56);
             this.btnSubirDoc.TabIndex = 6;
@@ -211,7 +211,7 @@
             this.pnlDocu.Controls.Add(this.label10);
             this.pnlDocu.Controls.Add(this.label12);
             this.pnlDocu.Location = new System.Drawing.Point(55, 406);
-            this.pnlDocu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlDocu.Margin = new System.Windows.Forms.Padding(2);
             this.pnlDocu.Name = "pnlDocu";
             this.pnlDocu.Size = new System.Drawing.Size(757, 510);
             this.pnlDocu.TabIndex = 7;
@@ -226,7 +226,7 @@
             "INE",
             "Certificado"});
             this.lbTipoDocu.Location = new System.Drawing.Point(227, 75);
-            this.lbTipoDocu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lbTipoDocu.Margin = new System.Windows.Forms.Padding(2);
             this.lbTipoDocu.Name = "lbTipoDocu";
             this.lbTipoDocu.Size = new System.Drawing.Size(368, 69);
             this.lbTipoDocu.TabIndex = 15;
@@ -235,7 +235,7 @@
             // 
             this.btnExaminar.Font = new System.Drawing.Font("Bahnschrift Condensed", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExaminar.Location = new System.Drawing.Point(609, 58);
-            this.btnExaminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnExaminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnExaminar.Name = "btnExaminar";
             this.btnExaminar.Size = new System.Drawing.Size(127, 29);
             this.btnExaminar.TabIndex = 14;
@@ -247,7 +247,7 @@
             // 
             this.btnGuardarDoc.Font = new System.Drawing.Font("Bahnschrift Condensed", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardarDoc.Location = new System.Drawing.Point(28, 183);
-            this.btnGuardarDoc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGuardarDoc.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardarDoc.Name = "btnGuardarDoc";
             this.btnGuardarDoc.Size = new System.Drawing.Size(194, 56);
             this.btnGuardarDoc.TabIndex = 14;
