@@ -87,6 +87,12 @@
     <Compile Include="PRESENTACION\ModuloPrincipal.Designer.cs">
       <DependentUpon>ModuloPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="PRESENTACION\PRES Coordinador\ctlAltaDocente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PRESENTACION\PRES Coordinador\ctlAltaDocente.Designer.cs">
+      <DependentUpon>ctlAltaDocente.cs</DependentUpon>
+    </Compile>
     <Compile Include="PRESENTACION\PRES Coordinador\ctlAltaHorario.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -118,6 +124,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PRESENTACION\ModuloPrincipal.resx">
       <DependentUpon>ModuloPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PRESENTACION\PRES Coordinador\ctlAltaDocente.resx">
+      <DependentUpon>ctlAltaDocente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PRESENTACION\PRES Coordinador\ctlAltaHorario.resx">
+      <DependentUpon>ctlAltaHorario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PRESENTACION\Reinscripcion.resx">
       <DependentUpon>Reinscripcion.cs</DependentUpon>

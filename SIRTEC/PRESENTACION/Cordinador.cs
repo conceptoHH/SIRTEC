@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIRTEC.PRESENTACION.PRES_Coordinador;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,22 @@ namespace SIRTEC.PRESENTACION
         public Cordinador()
         {
             InitializeComponent();
+        }
+
+        private void btnAltaDocente_Click(object sender, EventArgs e)
+        {
+            pnlPadre.Controls.Clear();
+            ctlAltaDocente ctlAltaDocente = new ctlAltaDocente();
+            ctlAltaDocente.Dock = DockStyle.Fill;
+            pnlPadre.Controls.Add(ctlAltaDocente);
+        }
+
+        private void btnHorarios_Click(object sender, EventArgs e)
+        {
+            pnlPadre.Controls.Clear();
+            ctlAltaHorario horario = new ctlAltaHorario();
+            horario.Dock = DockStyle.Fill;
+            pnlPadre .Controls.Add(horario);
         }
     }
 }
