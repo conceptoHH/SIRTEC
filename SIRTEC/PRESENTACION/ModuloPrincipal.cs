@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SIRTEC.PRESENTACION;
 
 namespace SIRTEC.PRESENTACION
 {
@@ -50,6 +51,13 @@ namespace SIRTEC.PRESENTACION
                     }
                 }
             };
+        }
+
+        private void btnCoord_Click(object sender, EventArgs e)
+        {
+            Cordinador cordinador = new Cordinador();
+            cordinador.Show();
+            this.Hide();
         }
     }
 }

@@ -53,9 +53,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.Font = new System.Drawing.Font("Bahnschrift Condensed", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(245, 24);
+            this.label2.Location = new System.Drawing.Point(327, 30);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(766, 65);
+            this.label2.Size = new System.Drawing.Size(1021, 80);
             this.label2.TabIndex = 2;
             this.label2.Text = "Tecnológico Nacional de México";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -66,8 +67,9 @@
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(160, 139);
+            this.pictureBox1.Size = new System.Drawing.Size(213, 171);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
@@ -78,17 +80,19 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1187, 139);
+            this.panel1.Size = new System.Drawing.Size(1583, 171);
             this.panel1.TabIndex = 14;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(157)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 835);
+            this.panel2.Location = new System.Drawing.Point(0, 1028);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1187, 27);
+            this.panel2.Size = new System.Drawing.Size(1583, 33);
             this.panel2.TabIndex = 16;
             // 
             // pnlPadre
@@ -102,10 +106,10 @@
             this.pnlPadre.Controls.Add(this.txtContraseña);
             this.pnlPadre.Controls.Add(this.txtUsuario);
             this.pnlPadre.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPadre.Location = new System.Drawing.Point(0, 139);
-            this.pnlPadre.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlPadre.Location = new System.Drawing.Point(0, 171);
+            this.pnlPadre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlPadre.Name = "pnlPadre";
-            this.pnlPadre.Size = new System.Drawing.Size(1187, 696);
+            this.pnlPadre.Size = new System.Drawing.Size(1583, 857);
             this.pnlPadre.TabIndex = 17;
             // 
             // label1
@@ -113,8 +117,9 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("Bahnschrift Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1187, 54);
+            this.label1.Size = new System.Drawing.Size(1583, 66);
             this.label1.TabIndex = 23;
             this.label1.Text = "Ingresa tu usuario y contraseña";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -123,9 +128,10 @@
             // 
             this.linkLabel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(453, 309);
+            this.linkLabel2.Location = new System.Drawing.Point(604, 380);
+            this.linkLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(148, 13);
+            this.linkLabel2.Size = new System.Drawing.Size(182, 16);
             this.linkLabel2.TabIndex = 21;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "Nuevo Ingreso? Da click aqui";
@@ -135,12 +141,14 @@
             // 
             this.linkLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(967, 449);
+            this.linkLabel1.Location = new System.Drawing.Point(1289, 553);
+            this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(86, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(107, 16);
             this.linkLabel1.TabIndex = 22;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Soporte Tecnico";
+            this.linkLabel1.Visible = false;
             // 
             // btnLogin
             // 
@@ -148,9 +156,10 @@
             this.btnLogin.AutoEllipsis = true;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnLogin.Font = new System.Drawing.Font("Bahnschrift Condensed", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(527, 420);
+            this.btnLogin.Location = new System.Drawing.Point(703, 517);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(150, 42);
+            this.btnLogin.Size = new System.Drawing.Size(200, 52);
             this.btnLogin.TabIndex = 20;
             this.btnLogin.Text = "Iniciar sesion";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -161,9 +170,10 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label5.Location = new System.Drawing.Point(451, 249);
+            this.label5.Location = new System.Drawing.Point(601, 306);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(114, 25);
+            this.label5.Size = new System.Drawing.Size(143, 29);
             this.label5.TabIndex = 19;
             this.label5.Text = "Contraseña";
             // 
@@ -172,9 +182,10 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label4.Location = new System.Drawing.Point(451, 125);
+            this.label4.Location = new System.Drawing.Point(601, 154);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 25);
+            this.label4.Size = new System.Drawing.Size(100, 29);
             this.label4.TabIndex = 18;
             this.label4.Text = "Usuario";
             // 
@@ -182,29 +193,33 @@
             // 
             this.txtContraseña.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContraseña.Location = new System.Drawing.Point(454, 277);
+            this.txtContraseña.Location = new System.Drawing.Point(605, 341);
+            this.txtContraseña.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtContraseña.Name = "txtContraseña";
-            this.txtContraseña.Size = new System.Drawing.Size(297, 29);
+            this.txtContraseña.PasswordChar = '*';
+            this.txtContraseña.Size = new System.Drawing.Size(395, 34);
             this.txtContraseña.TabIndex = 17;
             // 
             // txtUsuario
             // 
             this.txtUsuario.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(454, 153);
+            this.txtUsuario.Location = new System.Drawing.Point(605, 188);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(297, 29);
+            this.txtUsuario.Size = new System.Drawing.Size(395, 34);
             this.txtUsuario.TabIndex = 16;
             this.txtUsuario.Tag = "";
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1187, 862);
+            this.ClientSize = new System.Drawing.Size(1583, 1061);
             this.Controls.Add(this.pnlPadre);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Login";
             this.Text = "Login";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

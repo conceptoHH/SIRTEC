@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-// Agregar los using para iText 7
+//using para iText 7
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
@@ -726,7 +726,7 @@ namespace SIRTEC.PRESENTACION
                     btnGenerarPDF.Text = "Descargar PDF";
                     btnGenerarPDF.Size = new Size(150, 40);
                     btnGenerarPDF.Location = new Point(20, 510);
-                    btnGenerarPDF.Click += (sender, e) => GenerarPDF(dtHorario, nombreCompleto, numeroControl, numSemestre);
+                    //btnGenerarPDF.Click += (sender, e) => GenerarPDF(dtHorario, nombreCompleto, numeroControl, numSemestre);
                     panel.Controls.Add(btnGenerarPDF);
 
                     // Mostrar el formulario
@@ -751,10 +751,12 @@ namespace SIRTEC.PRESENTACION
         {
             try
             {
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "Archivo PDF|*.pdf";
-                saveFileDialog.Title = "Guardar horario como PDF";
-                saveFileDialog.FileName = $"Horario_{numeroControl}.pdf";
+                SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    Filter = "Archivo PDF|*.pdf",
+                    Title = "Guardar horario como PDF",
+                    FileName = $"Horario_{numeroControl}.pdf"
+                };
 
                 if (saveFileDialog.ShowDialog() != DialogResult.OK)
                     return;
@@ -762,7 +764,6 @@ namespace SIRTEC.PRESENTACION
                 // Crear el documento PDF usando iText 7
                 using (FileStream fs = new FileStream(saveFileDialog.FileName, FileMode.Create))
                 {
-                    // Inicializar el escritor y el documento PDF
                     PdfWriter writer = new PdfWriter(fs);
                     PdfDocument pdf = new PdfDocument(writer);
                     Document document = new Document(pdf);
@@ -778,7 +779,7 @@ namespace SIRTEC.PRESENTACION
                     document.Add(new Paragraph($"Alumno: {nombreAlumno}").SetFontSize(12));
                     document.Add(new Paragraph($"Número de Control: {numeroControl}").SetFontSize(12));
                     document.Add(new Paragraph($"Semestre: {numSemestre}").SetFontSize(12));
-                    document.Add(new Paragraph($"Fecha de impresión: {DateTime.Now.ToString("dd/MM/yyyy")}").SetFontSize(12));
+                    document.Add(new Paragraph($"Fecha de impresión: {DateTime.Now:dd/MM/yyyy}").SetFontSize(12));
                     document.Add(new Paragraph("\n"));
 
                     // Crear tabla para el horario
@@ -786,23 +787,14 @@ namespace SIRTEC.PRESENTACION
                         .UseAllAvailableWidth();
 
                     // Encabezados de la tabla
-                    Cell cellMateria = new Cell().Add(new Paragraph("Materia"));
-                    Cell cellHora = new Cell().Add(new Paragraph("Hora"));
-                    Cell cellAula = new Cell().Add(new Paragraph("Aula"));
-                    Cell cellDocente = new Cell().Add(new Paragraph("Docente"));
-
-                    // Estilo para las celdas de encabezado
-                    Color headerBgColor = new DeviceRgb(220, 220, 220);
-                    cellMateria.SetBackgroundColor(headerBgColor);
-                    cellHora.SetBackgroundColor(headerBgColor);
-                    cellAula.SetBackgroundColor(headerBgColor);
-                    cellDocente.SetBackgroundColor(headerBgColor);
-
-                    // Añadir encabezados a la tabla
-                    table.AddHeaderCell(cellMateria);
-                    table.AddHeaderCell(cellHora);
-                    table.AddHeaderCell(cellAula);
-                    table.AddHeaderCell(cellDocente);
+                    string[] headers = { "Materia", "Hora", "Aula", "Docente" };
+                    foreach (var header in headers)
+                    {
+                        Cell cell = new Cell().Add(new Paragraph(header))
+                            .SetBackgroundColor(new DeviceRgb(220, 220, 220))
+                            .SetTextAlignment(TextAlignment.CENTER);
+                        table.AddHeaderCell(cell);
+                    }
 
                     // Añadir filas de datos
                     foreach (DataRow row in dtHorario.Rows)

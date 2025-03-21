@@ -27,7 +27,7 @@ namespace SIRTEC.PRESENTACION.PRES_Coordinador
             {
                 if (RegistrarHorario())
                 {
-                    MessageBox.Show("Horario registrado correctamente.",
+                    MessageBox.Show("Materia registrada correctamente.",
                         "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

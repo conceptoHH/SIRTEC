@@ -184,6 +184,7 @@
             this.btnCoord.TabIndex = 4;
             this.btnCoord.Text = "Coordinador";
             this.btnCoord.UseVisualStyleBackColor = true;
+            this.btnCoord.Click += new System.EventHandler(this.btnCoord_Click);
             // 
             // ModuloPrincipal
             // 
