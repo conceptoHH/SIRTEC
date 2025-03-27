@@ -72,7 +72,7 @@ namespace SIRTEC.PRESENTACION
             }
 
             // Crear una nueva instancia del control de inscripción
-            ctlAltaDocente ins = new ctlAltaDocente();
+            ctlInscripcion ins = new ctlInscripcion();
             ins.Dock = DockStyle.Fill;
 
             // Agregar el control al panel

@@ -1,6 +1,6 @@
 ﻿namespace SIRTEC.PRESENTACION
 {
-    partial class ctlAltaDocente
+    partial class ctlInscripcion
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -52,6 +52,18 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtCalle = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtColonia = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtNumero = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtCodigoP = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtCiudad = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.cbEstado = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDocumentos)).BeginInit();
             this.pnlDocu.SuspendLayout();
@@ -86,7 +98,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(51, 159);
+            this.label3.Location = new System.Drawing.Point(51, 160);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(162, 23);
             this.label3.TabIndex = 0;
@@ -95,7 +107,7 @@
             // txtApaterno
             // 
             this.txtApaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtApaterno.Location = new System.Drawing.Point(254, 164);
+            this.txtApaterno.Location = new System.Drawing.Point(254, 165);
             this.txtApaterno.Name = "txtApaterno";
             this.txtApaterno.Size = new System.Drawing.Size(368, 26);
             this.txtApaterno.TabIndex = 1;
@@ -103,7 +115,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(51, 202);
+            this.label4.Location = new System.Drawing.Point(51, 204);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(162, 23);
             this.label4.TabIndex = 0;
@@ -112,7 +124,7 @@
             // txtAmaterno
             // 
             this.txtAmaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAmaterno.Location = new System.Drawing.Point(254, 207);
+            this.txtAmaterno.Location = new System.Drawing.Point(254, 209);
             this.txtAmaterno.Name = "txtAmaterno";
             this.txtAmaterno.Size = new System.Drawing.Size(368, 26);
             this.txtAmaterno.TabIndex = 1;
@@ -120,7 +132,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(51, 245);
+            this.label5.Location = new System.Drawing.Point(51, 248);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(197, 23);
             this.label5.TabIndex = 0;
@@ -129,7 +141,7 @@
             // dtFnacimiento
             // 
             this.dtFnacimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtFnacimiento.Location = new System.Drawing.Point(254, 248);
+            this.dtFnacimiento.Location = new System.Drawing.Point(254, 253);
             this.dtFnacimiento.Name = "dtFnacimiento";
             this.dtFnacimiento.Size = new System.Drawing.Size(368, 26);
             this.dtFnacimiento.TabIndex = 2;
@@ -137,7 +149,7 @@
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(51, 284);
+            this.label6.Location = new System.Drawing.Point(51, 292);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(197, 23);
             this.label6.TabIndex = 0;
@@ -146,7 +158,7 @@
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(254, 287);
+            this.txtEmail.Location = new System.Drawing.Point(254, 297);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(368, 26);
             this.txtEmail.TabIndex = 1;
@@ -156,7 +168,7 @@
             this.panel1.Controls.Add(this.dgvDocumentos);
             this.panel1.Location = new System.Drawing.Point(664, 164);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(562, 524);
+            this.panel1.Size = new System.Drawing.Size(562, 246);
             this.panel1.TabIndex = 3;
             // 
             // dgvDocumentos
@@ -180,7 +192,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Bahnschrift Condensed", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(55, 345);
+            this.btnGuardar.Location = new System.Drawing.Point(34, 614);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(194, 56);
@@ -193,7 +205,7 @@
             // 
             this.btnSubirDoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnSubirDoc.Font = new System.Drawing.Font("Bahnschrift Condensed", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubirDoc.Location = new System.Drawing.Point(427, 345);
+            this.btnSubirDoc.Location = new System.Drawing.Point(427, 614);
             this.btnSubirDoc.Margin = new System.Windows.Forms.Padding(2);
             this.btnSubirDoc.Name = "btnSubirDoc";
             this.btnSubirDoc.Size = new System.Drawing.Size(195, 56);
@@ -210,10 +222,10 @@
             this.pnlDocu.Controls.Add(this.txtNombreDocumento);
             this.pnlDocu.Controls.Add(this.label10);
             this.pnlDocu.Controls.Add(this.label12);
-            this.pnlDocu.Location = new System.Drawing.Point(55, 406);
+            this.pnlDocu.Location = new System.Drawing.Point(664, 431);
             this.pnlDocu.Margin = new System.Windows.Forms.Padding(2);
             this.pnlDocu.Name = "pnlDocu";
-            this.pnlDocu.Size = new System.Drawing.Size(757, 510);
+            this.pnlDocu.Size = new System.Drawing.Size(612, 255);
             this.pnlDocu.TabIndex = 7;
             this.pnlDocu.Visible = false;
             // 
@@ -225,19 +237,19 @@
             "CURP",
             "INE",
             "Certificado"});
-            this.lbTipoDocu.Location = new System.Drawing.Point(227, 75);
+            this.lbTipoDocu.Location = new System.Drawing.Point(244, 75);
             this.lbTipoDocu.Margin = new System.Windows.Forms.Padding(2);
             this.lbTipoDocu.Name = "lbTipoDocu";
-            this.lbTipoDocu.Size = new System.Drawing.Size(368, 69);
+            this.lbTipoDocu.Size = new System.Drawing.Size(351, 69);
             this.lbTipoDocu.TabIndex = 15;
             // 
             // btnExaminar
             // 
             this.btnExaminar.Font = new System.Drawing.Font("Bahnschrift Condensed", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExaminar.Location = new System.Drawing.Point(609, 58);
+            this.btnExaminar.Location = new System.Drawing.Point(453, 183);
             this.btnExaminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnExaminar.Name = "btnExaminar";
-            this.btnExaminar.Size = new System.Drawing.Size(127, 29);
+            this.btnExaminar.Size = new System.Drawing.Size(142, 56);
             this.btnExaminar.TabIndex = 14;
             this.btnExaminar.Text = "Examinar";
             this.btnExaminar.UseVisualStyleBackColor = true;
@@ -258,9 +270,9 @@
             // txtNombreDocumento
             // 
             this.txtNombreDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreDocumento.Location = new System.Drawing.Point(227, 35);
+            this.txtNombreDocumento.Location = new System.Drawing.Point(244, 35);
             this.txtNombreDocumento.Name = "txtNombreDocumento";
-            this.txtNombreDocumento.Size = new System.Drawing.Size(368, 26);
+            this.txtNombreDocumento.Size = new System.Drawing.Size(351, 26);
             this.txtNombreDocumento.TabIndex = 11;
             // 
             // label10
@@ -277,7 +289,7 @@
             this.label12.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(24, 30);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(211, 23);
+            this.label12.Size = new System.Drawing.Size(214, 45);
             this.label12.TabIndex = 7;
             this.label12.Text = "Nombre del Documento:";
             // 
@@ -289,7 +301,7 @@
             this.btnVolver.FlatAppearance.BorderSize = 0;
             this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVolver.Font = new System.Drawing.Font("Bahnschrift Condensed", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolver.Location = new System.Drawing.Point(1156, 17);
+            this.btnVolver.Location = new System.Drawing.Point(1224, 17);
             this.btnVolver.Margin = new System.Windows.Forms.Padding(2);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(70, 65);
@@ -297,30 +309,179 @@
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
-            // ctInscripcion
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(51, 336);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(197, 23);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Calle:";
+            // 
+            // txtCalle
+            // 
+            this.txtCalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCalle.Location = new System.Drawing.Point(254, 341);
+            this.txtCalle.Name = "txtCalle";
+            this.txtCalle.Size = new System.Drawing.Size(368, 26);
+            this.txtCalle.TabIndex = 1;
+            // 
+            // label9
+            // 
+            this.label9.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(51, 380);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(197, 23);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Colonia:";
+            // 
+            // txtColonia
+            // 
+            this.txtColonia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtColonia.Location = new System.Drawing.Point(254, 385);
+            this.txtColonia.Name = "txtColonia";
+            this.txtColonia.Size = new System.Drawing.Size(368, 26);
+            this.txtColonia.TabIndex = 1;
+            // 
+            // label11
+            // 
+            this.label11.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(51, 424);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(197, 23);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Numero Ext:";
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumero.Location = new System.Drawing.Point(254, 429);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(368, 26);
+            this.txtNumero.TabIndex = 1;
+            // 
+            // label13
+            // 
+            this.label13.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(51, 468);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(197, 23);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Código Postal:";
+            // 
+            // txtCodigoP
+            // 
+            this.txtCodigoP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoP.Location = new System.Drawing.Point(254, 473);
+            this.txtCodigoP.Name = "txtCodigoP";
+            this.txtCodigoP.Size = new System.Drawing.Size(368, 26);
+            this.txtCodigoP.TabIndex = 1;
+            // 
+            // label14
+            // 
+            this.label14.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(51, 512);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(197, 23);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Ciudad:";
+            // 
+            // txtCiudad
+            // 
+            this.txtCiudad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCiudad.Location = new System.Drawing.Point(254, 517);
+            this.txtCiudad.Name = "txtCiudad";
+            this.txtCiudad.Size = new System.Drawing.Size(368, 26);
+            this.txtCiudad.TabIndex = 1;
+            // 
+            // label15
+            // 
+            this.label15.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(51, 556);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(197, 23);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "Estado:";
+            // 
+            // cbEstado
+            // 
+            this.cbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEstado.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbEstado.FormattingEnabled = true;
+            this.cbEstado.Items.AddRange(new object[] {
+            "Aguascalientes",
+            "Baja California",
+            "Baja California Sur",
+            "Campeche ",
+            "Chiapas",
+            "Chihuahua",
+            "Ciudad de México ",
+            "Coahuila",
+            "Colima",
+            "Durango",
+            "Guanajuato",
+            "Guerrero",
+            "Hidalgo",
+            "Jalisco",
+            "México",
+            "Michoacán",
+            "Morelos",
+            "Nayarit",
+            "Nuevo León",
+            "Oaxaca",
+            "Puebla",
+            "Querétaro",
+            "Quintana Roo",
+            "San Luis Potosí   ",
+            "Sinaloa",
+            "Sonora",
+            "Tabasco",
+            "Tamaulipas",
+            "Tlaxcala",
+            "Veracruz",
+            "Yucatán",
+            "Zacatecas"});
+            this.cbEstado.Location = new System.Drawing.Point(254, 561);
+            this.cbEstado.Name = "cbEstado";
+            this.cbEstado.Size = new System.Drawing.Size(368, 27);
+            this.cbEstado.TabIndex = 8;
+            // 
+            // ctlInscripcion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.Controls.Add(this.pnlDocu);
+            this.Controls.Add(this.cbEstado);
             this.Controls.Add(this.btnSubirDoc);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dtFnacimiento);
+            this.Controls.Add(this.txtCiudad);
+            this.Controls.Add(this.txtCodigoP);
+            this.Controls.Add(this.txtNumero);
+            this.Controls.Add(this.txtColonia);
+            this.Controls.Add(this.txtCalle);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtAmaterno);
             this.Controls.Add(this.txtApaterno);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Name = "ctInscripcion";
-            this.Size = new System.Drawing.Size(1251, 711);
+            this.Controls.Add(this.pnlDocu);
+            this.Name = "ctlInscripcion";
+            this.Size = new System.Drawing.Size(1319, 711);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDocumentos)).EndInit();
             this.pnlDocu.ResumeLayout(false);
@@ -356,5 +517,17 @@
         private System.Windows.Forms.Button btnExaminar;
         private System.Windows.Forms.ListBox lbTipoDocu;
         private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtCalle;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtColonia;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtNumero;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtCodigoP;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtCiudad;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox cbEstado;
     }
 }
