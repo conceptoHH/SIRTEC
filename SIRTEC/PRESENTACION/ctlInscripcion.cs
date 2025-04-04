@@ -1329,6 +1329,12 @@ namespace SIRTEC.PRESENTACION
             }
         }
 
+        //private void ValidarLongitudMaxima(object sender, EventArgs e)
+        //{
+        //    TextBox textBox = sender as TextBox;
+
+        //}
+
         /// <summary>
         /// Verifica si ya existe un alumno con el mismo nombre y apellidos
         /// </summary>
@@ -1404,6 +1410,7 @@ namespace SIRTEC.PRESENTACION
             txtCalle.Leave += ValidarLongitudMinima;
             txtColonia.Leave += ValidarLongitudMinima;
             txtCiudad.Leave += ValidarLongitudMinima;
+            txtNumero.Leave += ValidarLongitudMinima;
 
             // Validar formato de correo electrónico
             txtEmail.Leave += ValidarFormatoEmail;
@@ -1411,6 +1418,9 @@ namespace SIRTEC.PRESENTACION
             // Validar código postal
             txtCodigoP.KeyPress += SoloNumeros;
             txtCodigoP.Leave += ValidarCodigoPostal;
+
+            // Validad num exterior
+            txtNumero.KeyPress += SoloNumeros;
         }
 
         /// <summary>

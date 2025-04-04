@@ -153,5 +153,10 @@ namespace SIRTEC.PRESENTACION.PRES_Coordinador
                 this.Dispose();
             }
         }
+
+        private void ctlAltaDocente_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
