@@ -150,7 +150,6 @@
             this.btnDocentes.TabIndex = 0;
             this.btnDocentes.Text = "Docentes";
             this.btnDocentes.UseVisualStyleBackColor = true;
-            this.btnDocentes.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnInsc
             // 
