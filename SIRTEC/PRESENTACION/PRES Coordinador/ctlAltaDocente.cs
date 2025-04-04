@@ -55,6 +55,23 @@ namespace SIRTEC.PRESENTACION.PRES_Coordinador
                 return false;
             }
 
+            // Validar longitud mínima de los campos (que tenga al menos 3 caracteres)
+            if (txtNomDoc.Text.Length < 3 || txtUsuarioDoc.Text.Length < 3 || txtContrasenaDoc.Text.Length < 3)
+            {
+                MessageBox.Show("Los campos de texto deben contener al menos 3 caracteres.",
+                    "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Validar formato de correo electrónico en el campo de usuario
+            string email = txtUsuarioDoc.Text.Trim();
+            if (!email.Contains("@") || !email.EndsWith(".com"))
+            {
+                MessageBox.Show("El nombre de usuario debe contener '@' y terminar en '.com'",
+                    "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
             // Verificar si el usuario ya existe
             try
             {

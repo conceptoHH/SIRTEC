@@ -32,12 +32,11 @@ namespace SIRTEC.PRESENTACION
 
         private void ConfigurarVistaSegunTipoUsuario(string tipoUsuario)
         {
-            // Ocultar todos los botones/módulos primero
+            // Ocultar todos los botones primero
             btnInsc.Visible = false;
             btnCoord.Visible = false;
             btnDocentes.Visible = false;
             btnReinsc.Visible = false;
-            // Añadir aquí más botones según sea necesario
 
             // Mostrar solo los correspondientes al tipo de usuario
             switch (tipoUsuario)
@@ -68,7 +67,6 @@ namespace SIRTEC.PRESENTACION
         }
         private void btnInsc_Click(object sender, EventArgs e)
         {
-            // Código existente sin cambios
             // Ocultar los controles actuales del panel padre
             foreach (Control control in pnlPadre.Controls)
             {
@@ -99,7 +97,6 @@ namespace SIRTEC.PRESENTACION
 
         private void btnCoord_Click(object sender, EventArgs e)
         {
-            // Código existente sin cambios
             Cordinador cordinador = new Cordinador();
             cordinador.Show();
             this.Hide();

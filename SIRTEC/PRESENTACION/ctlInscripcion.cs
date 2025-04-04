@@ -1184,6 +1184,7 @@ namespace SIRTEC.PRESENTACION
             }
         }
 
+        /// <summary>
         /// Realiza todas las validaciones necesarias antes de inscribir al alumno
         /// </summary>
         /// <returns>True si todas las validaciones pasan, False si alguna falla</returns>
@@ -1210,7 +1211,7 @@ namespace SIRTEC.PRESENTACION
                 return false;
             }
 
-            // 3. Validar la edad (al menos 17 años)
+            // 3. Validar la edad (al menos 17 años y no más de 90 años)
             DateTime fechaNacimiento = dtFnacimiento.Value;
             int edad = DateTime.Today.Year - fechaNacimiento.Year;
             // Ajustar la edad si aún no ha cumplido años este año
@@ -1220,6 +1221,13 @@ namespace SIRTEC.PRESENTACION
             if (edad < 17)
             {
                 MessageBox.Show("El alumno debe tener al menos 17 años para inscribirse.",
+                    "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (edad > 90)
+            {
+                MessageBox.Show("El alumno no puede tener más de 90 años para inscribirse.",
                     "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
@@ -1329,11 +1337,17 @@ namespace SIRTEC.PRESENTACION
             }
         }
 
-        //private void ValidarLongitudMaxima(object sender, EventArgs e)
-        //{
-        //    TextBox textBox = sender as TextBox;
-
-        //}
+        private void ValidarLongitudMaxima(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null && textBox.Text.Length > 0 && textBox.Text.Length >= 5)
+            {
+                MessageBox.Show($"El campo no puede contener más de 5 caracteres.",
+                    "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox.SelectAll();
+                textBox.Clear();
+            }
+        }
 
         /// <summary>
         /// Verifica si ya existe un alumno con el mismo nombre y apellidos
@@ -1419,6 +1433,10 @@ namespace SIRTEC.PRESENTACION
             txtCodigoP.KeyPress += SoloNumeros;
             txtCodigoP.Leave += ValidarCodigoPostal;
 
+            // Validar longitud máxima
+            txtCodigoP.KeyPress += ValidarLongitudMaxima;
+            txtNumero.KeyPress += ValidarLongitudMaxima;
+
             // Validad num exterior
             txtNumero.KeyPress += SoloNumeros;
         }
@@ -1450,6 +1468,10 @@ namespace SIRTEC.PRESENTACION
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
+            }
+            else if (txtCodigoP.TextLength >= 5)
+            {
+                e.Handled = false;
             }
         }
 
