@@ -98,12 +98,15 @@ namespace SIRTEC.PRESENTACION
             string username = txtUsuario.Text;
             string password = txtContraseña.Text;
 
-            if (ValidarCredenciales(username, password))
+            string tipoUsuario = ValidarCredenciales(username, password);
+
+            if (!string.IsNullOrEmpty(tipoUsuario))
             {
                 // Credenciales válidas, redirigir al usuario a la siguiente pantalla
                 MessageBox.Show("Inicio de sesión exitoso", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                // Aquí puedes redirigir al usuario a la pantalla principal
-                ModuloPrincipal principal = new ModuloPrincipal();
+
+                // Pasar el tipo de usuario al formulario principal
+                ModuloPrincipal principal = new ModuloPrincipal(tipoUsuario);
                 principal.Show();
                 this.Hide();
             }
@@ -114,23 +117,28 @@ namespace SIRTEC.PRESENTACION
             }
         }
 
-        private bool ValidarCredenciales(string username, string password)
+        private string ValidarCredenciales(string username, string password)
         {
-            bool credencialesValidas = false;
+            string tipoUsuario = "";
 
             try
             {
                 CONEXIONMAESTRA.abrir();
                 {
-                    string consulta = "SELECT COUNT(*) FROM Usuarios WHERE username = @username AND password = @password";
+                    string consulta = "SELECT tipo_usuario FROM Usuarios WHERE username = @username AND password = @password";
 
                     using (SqlCommand cmd = new SqlCommand(consulta, CONEXIONMAESTRA.conectar))
                     {
                         cmd.Parameters.AddWithValue("@username", username);
                         cmd.Parameters.AddWithValue("@password", password);
 
-                        int cantidad = Convert.ToInt32(cmd.ExecuteScalar());
-                        credencialesValidas = cantidad > 0;
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                tipoUsuario = reader["tipo_usuario"].ToString();
+                            }
+                        }
                     }
                     CONEXIONMAESTRA.cerrar();
                 }
@@ -141,7 +149,7 @@ namespace SIRTEC.PRESENTACION
                 CONEXIONMAESTRA.cerrar();
             }
 
-            return credencialesValidas;
+            return tipoUsuario;
         }
     }
 }

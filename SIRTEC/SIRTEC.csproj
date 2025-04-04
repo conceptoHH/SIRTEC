@@ -217,6 +217,12 @@
     <Compile Include="PRESENTACION\PRES Coordinador\ctlAltaHorario.Designer.cs">
       <DependentUpon>ctlAltaHorario.cs</DependentUpon>
     </Compile>
+    <Compile Include="PRESENTACION\PRES Coordinador\ctlConsultaAlumnos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PRESENTACION\PRES Coordinador\ctlConsultaAlumnos.Designer.cs">
+      <DependentUpon>ctlConsultaAlumnos.cs</DependentUpon>
+    </Compile>
     <Compile Include="PRESENTACION\Reinscripcion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -248,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PRESENTACION\PRES Coordinador\ctlAltaHorario.resx">
       <DependentUpon>ctlAltaHorario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PRESENTACION\PRES Coordinador\ctlConsultaAlumnos.resx">
+      <DependentUpon>ctlConsultaAlumnos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PRESENTACION\Reinscripcion.resx">
       <DependentUpon>Reinscripcion.cs</DependentUpon>

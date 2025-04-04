@@ -13,18 +13,62 @@ namespace SIRTEC.PRESENTACION
 {
     public partial class ModuloPrincipal : Form
     {
+        private string _tipoUsuario;
+
+        // Constructor original para compatibilidad
         public ModuloPrincipal()
         {
             InitializeComponent();
+            ConfigurarVistaSegunTipoUsuario("coordinador"); // Por defecto
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        // Nuevo constructor que acepta el tipo de usuario
+        public ModuloPrincipal(string tipoUsuario)
         {
-
+            InitializeComponent();
+            _tipoUsuario = tipoUsuario.ToLower();
+            ConfigurarVistaSegunTipoUsuario(_tipoUsuario);
         }
 
+        private void ConfigurarVistaSegunTipoUsuario(string tipoUsuario)
+        {
+            // Ocultar todos los botones/módulos primero
+            btnInsc.Visible = false;
+            btnCoord.Visible = false;
+            btnDocentes.Visible = false;
+            btnReinsc.Visible = false;
+            // Añadir aquí más botones según sea necesario
+
+            // Mostrar solo los correspondientes al tipo de usuario
+            switch (tipoUsuario)
+            {
+                case "alumno":
+                    btnInsc.Visible = true;
+                    btnReinsc.Visible = true;
+                    // Aquí puedes añadir más botones específicos para alumnos
+                    this.Text = "Sistema SIRTEC - Módulo Alumno";
+                    break;
+                case "docente":
+                    btnDocentes.Visible = true;
+                    // Aquí mostrarías los botones para docentes
+                    // Por ejemplo: btnDocente.Visible = true;
+                    this.Text = "Sistema SIRTEC - Módulo Docente";
+                    break;
+                case "coordinador":
+                    btnInsc.Visible = true;
+                    btnReinsc.Visible = true;
+                    btnCoord.Visible = true;
+                    // Mostrar todos los módulos para el coordinador
+                    this.Text = "Sistema SIRTEC - Módulo Coordinador";
+                    break;
+                default:
+                    MessageBox.Show("Tipo de usuario no reconocido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+            }
+        }
         private void btnInsc_Click(object sender, EventArgs e)
         {
+            // Código existente sin cambios
             // Ocultar los controles actuales del panel padre
             foreach (Control control in pnlPadre.Controls)
             {
@@ -55,6 +99,7 @@ namespace SIRTEC.PRESENTACION
 
         private void btnCoord_Click(object sender, EventArgs e)
         {
+            // Código existente sin cambios
             Cordinador cordinador = new Cordinador();
             cordinador.Show();
             this.Hide();
