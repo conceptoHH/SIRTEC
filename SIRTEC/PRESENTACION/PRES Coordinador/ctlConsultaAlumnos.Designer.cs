@@ -29,32 +29,33 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctlConsultaAlumnos));
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlBuscar = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtBuscador = new System.Windows.Forms.TextBox();
-            this.dataListadoPersonal = new System.Windows.Forms.DataGridView();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.txtBusqueda = new System.Windows.Forms.TextBox();
+            this.lblBuscar = new System.Windows.Forms.Label();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pnlEditarAlumno = new System.Windows.Forms.Panel();
+            this.pnlEdicion = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.dgvHorario = new System.Windows.Forms.DataGridView();
             this.cbEstado = new System.Windows.Forms.ComboBox();
             this.btnVolver = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dgvDocumentos = new System.Windows.Forms.DataGridView();
-            this.dtFnacimiento = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.txtCiudad = new System.Windows.Forms.TextBox();
-            this.txtCodigoP = new System.Windows.Forms.TextBox();
+            this.txtCP = new System.Windows.Forms.TextBox();
             this.txtNumero = new System.Windows.Forms.TextBox();
             this.txtColonia = new System.Windows.Forms.TextBox();
             this.txtCalle = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtAmaterno = new System.Windows.Forms.TextBox();
-            this.txtApaterno = new System.Windows.Forms.TextBox();
+            this.txtApellidoMaterno = new System.Windows.Forms.TextBox();
+            this.txtApellidoPaterno = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -66,88 +67,76 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataListadoPersonal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.pnlEditarAlumno.SuspendLayout();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cbSemestre = new System.Windows.Forms.ComboBox();
+            this.dgvAlumnos = new System.Windows.Forms.DataGridView();
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.pnlBuscar.SuspendLayout();
+            this.pnlEdicion.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHorario)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDocumentos)).BeginInit();
-            this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnos)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // pnlBuscar
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.txtBuscador);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1835, 86);
-            this.panel1.TabIndex = 1;
+            this.pnlBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.pnlBuscar.Controls.Add(this.panel3);
+            this.pnlBuscar.Controls.Add(this.txtBusqueda);
+            this.pnlBuscar.Controls.Add(this.lblBuscar);
+            this.pnlBuscar.Controls.Add(this.btnBuscar);
+            this.pnlBuscar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlBuscar.Location = new System.Drawing.Point(0, 0);
+            this.pnlBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlBuscar.Name = "pnlBuscar";
+            this.pnlBuscar.Size = new System.Drawing.Size(1835, 86);
+            this.pnlBuscar.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.DarkGray;
-            this.panel3.Location = new System.Drawing.Point(24, 60);
+            this.panel3.Location = new System.Drawing.Point(175, 60);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(307, 4);
             this.panel3.TabIndex = 1;
             // 
-            // txtBuscador
+            // txtBusqueda
             // 
-            this.txtBuscador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.txtBuscador.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBuscador.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscador.ForeColor = System.Drawing.Color.White;
-            this.txtBuscador.Location = new System.Drawing.Point(24, 31);
-            this.txtBuscador.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtBuscador.Name = "txtBuscador";
-            this.txtBuscador.Size = new System.Drawing.Size(307, 23);
-            this.txtBuscador.TabIndex = 0;
+            this.txtBusqueda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.txtBusqueda.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusqueda.ForeColor = System.Drawing.Color.Black;
+            this.txtBusqueda.Location = new System.Drawing.Point(175, 31);
+            this.txtBusqueda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(307, 23);
+            this.txtBusqueda.TabIndex = 0;
             // 
-            // dataListadoPersonal
+            // lblBuscar
             // 
-            this.dataListadoPersonal.AllowUserToAddRows = false;
-            this.dataListadoPersonal.AllowUserToDeleteRows = false;
-            this.dataListadoPersonal.AllowUserToResizeRows = false;
-            this.dataListadoPersonal.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.dataListadoPersonal.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataListadoPersonal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataListadoPersonal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Eliminar,
-            this.Editar});
-            this.dataListadoPersonal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataListadoPersonal.Location = new System.Drawing.Point(0, 86);
-            this.dataListadoPersonal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataListadoPersonal.Name = "dataListadoPersonal";
-            this.dataListadoPersonal.ReadOnly = true;
-            this.dataListadoPersonal.RowHeadersWidth = 51;
-            this.dataListadoPersonal.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.dataListadoPersonal.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataListadoPersonal.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            this.dataListadoPersonal.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dataListadoPersonal.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.dataListadoPersonal.RowTemplate.Height = 40;
-            this.dataListadoPersonal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListadoPersonal.Size = new System.Drawing.Size(1835, 869);
-            this.dataListadoPersonal.TabIndex = 2;
+            this.lblBuscar.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuscar.Location = new System.Drawing.Point(71, 36);
+            this.lblBuscar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBuscar.Name = "lblBuscar";
+            this.lblBuscar.Size = new System.Drawing.Size(97, 28);
+            this.lblBuscar.TabIndex = 19;
+            this.lblBuscar.Text = "Buscar:";
             // 
-            // Editar
+            // btnBuscar
             // 
-            this.Editar.HeaderText = "";
-            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Editar.MinimumWidth = 6;
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            this.Editar.Width = 125;
+            this.btnBuscar.BackgroundImage = global::SIRTEC.Properties.Resources.lupa;
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnBuscar.Font = new System.Drawing.Font("Bahnschrift Condensed", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Location = new System.Drawing.Point(488, 25);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(88, 39);
+            this.btnBuscar.TabIndex = 43;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // dataGridViewImageColumn1
             // 
@@ -158,62 +147,74 @@
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.Width = 125;
             // 
-            // Eliminar
+            // pnlEdicion
             // 
-            this.Eliminar.HeaderText = "";
-            this.Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar.Image")));
-            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Eliminar.MinimumWidth = 6;
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
-            this.Eliminar.Width = 125;
+            this.pnlEdicion.Controls.Add(this.vScrollBar1);
+            this.pnlEdicion.Controls.Add(this.label10);
+            this.pnlEdicion.Controls.Add(this.panel5);
+            this.pnlEdicion.Controls.Add(this.cbSemestre);
+            this.pnlEdicion.Controls.Add(this.cbEstado);
+            this.pnlEdicion.Controls.Add(this.btnVolver);
+            this.pnlEdicion.Controls.Add(this.btnCancelar);
+            this.pnlEdicion.Controls.Add(this.btnGuardar);
+            this.pnlEdicion.Controls.Add(this.label7);
+            this.pnlEdicion.Controls.Add(this.panel4);
+            this.pnlEdicion.Controls.Add(this.dtpFechaNacimiento);
+            this.pnlEdicion.Controls.Add(this.txtCiudad);
+            this.pnlEdicion.Controls.Add(this.txtCP);
+            this.pnlEdicion.Controls.Add(this.txtNumero);
+            this.pnlEdicion.Controls.Add(this.txtColonia);
+            this.pnlEdicion.Controls.Add(this.txtCalle);
+            this.pnlEdicion.Controls.Add(this.txtEmail);
+            this.pnlEdicion.Controls.Add(this.txtApellidoMaterno);
+            this.pnlEdicion.Controls.Add(this.txtApellidoPaterno);
+            this.pnlEdicion.Controls.Add(this.txtNombre);
+            this.pnlEdicion.Controls.Add(this.label12);
+            this.pnlEdicion.Controls.Add(this.label15);
+            this.pnlEdicion.Controls.Add(this.label14);
+            this.pnlEdicion.Controls.Add(this.label13);
+            this.pnlEdicion.Controls.Add(this.label11);
+            this.pnlEdicion.Controls.Add(this.label9);
+            this.pnlEdicion.Controls.Add(this.label8);
+            this.pnlEdicion.Controls.Add(this.label6);
+            this.pnlEdicion.Controls.Add(this.label5);
+            this.pnlEdicion.Controls.Add(this.label4);
+            this.pnlEdicion.Controls.Add(this.label3);
+            this.pnlEdicion.Controls.Add(this.label1);
+            this.pnlEdicion.Location = new System.Drawing.Point(19, 91);
+            this.pnlEdicion.Name = "pnlEdicion";
+            this.pnlEdicion.Size = new System.Drawing.Size(1761, 836);
+            this.pnlEdicion.TabIndex = 4;
+            this.pnlEdicion.Visible = false;
             // 
-            // pictureBox1
+            // label10
             // 
-            this.pictureBox1.Image = global::SIRTEC.Properties.Resources.lupa;
-            this.pictureBox1.Location = new System.Drawing.Point(336, 31);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(52, 33);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.label10.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(872, 462);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(283, 28);
+            this.label10.TabIndex = 44;
+            this.label10.Text = "Horario";
             // 
-            // pnlEditarAlumno
+            // panel5
             // 
-            this.pnlEditarAlumno.Controls.Add(this.label10);
-            this.pnlEditarAlumno.Controls.Add(this.panel5);
-            this.pnlEditarAlumno.Controls.Add(this.cbEstado);
-            this.pnlEditarAlumno.Controls.Add(this.btnVolver);
-            this.pnlEditarAlumno.Controls.Add(this.btnGuardar);
-            this.pnlEditarAlumno.Controls.Add(this.label7);
-            this.pnlEditarAlumno.Controls.Add(this.panel4);
-            this.pnlEditarAlumno.Controls.Add(this.dtFnacimiento);
-            this.pnlEditarAlumno.Controls.Add(this.txtCiudad);
-            this.pnlEditarAlumno.Controls.Add(this.txtCodigoP);
-            this.pnlEditarAlumno.Controls.Add(this.txtNumero);
-            this.pnlEditarAlumno.Controls.Add(this.txtColonia);
-            this.pnlEditarAlumno.Controls.Add(this.txtCalle);
-            this.pnlEditarAlumno.Controls.Add(this.txtEmail);
-            this.pnlEditarAlumno.Controls.Add(this.txtAmaterno);
-            this.pnlEditarAlumno.Controls.Add(this.txtApaterno);
-            this.pnlEditarAlumno.Controls.Add(this.txtNombre);
-            this.pnlEditarAlumno.Controls.Add(this.label2);
-            this.pnlEditarAlumno.Controls.Add(this.label15);
-            this.pnlEditarAlumno.Controls.Add(this.label14);
-            this.pnlEditarAlumno.Controls.Add(this.label13);
-            this.pnlEditarAlumno.Controls.Add(this.label11);
-            this.pnlEditarAlumno.Controls.Add(this.label9);
-            this.pnlEditarAlumno.Controls.Add(this.label8);
-            this.pnlEditarAlumno.Controls.Add(this.label6);
-            this.pnlEditarAlumno.Controls.Add(this.label5);
-            this.pnlEditarAlumno.Controls.Add(this.label4);
-            this.pnlEditarAlumno.Controls.Add(this.label3);
-            this.pnlEditarAlumno.Controls.Add(this.label1);
-            this.pnlEditarAlumno.Location = new System.Drawing.Point(24, 119);
-            this.pnlEditarAlumno.Name = "pnlEditarAlumno";
-            this.pnlEditarAlumno.Size = new System.Drawing.Size(1761, 836);
-            this.pnlEditarAlumno.TabIndex = 4;
+            this.panel5.Controls.Add(this.dgvHorario);
+            this.panel5.Location = new System.Drawing.Point(877, 514);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(749, 238);
+            this.panel5.TabIndex = 30;
+            // 
+            // dgvHorario
+            // 
+            this.dgvHorario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHorario.Location = new System.Drawing.Point(16, 20);
+            this.dgvHorario.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvHorario.Name = "dgvHorario";
+            this.dgvHorario.RowHeadersWidth = 51;
+            this.dgvHorario.Size = new System.Drawing.Size(716, 37);
+            this.dgvHorario.TabIndex = 0;
             // 
             // cbEstado
             // 
@@ -274,13 +275,24 @@
             this.btnVolver.TabIndex = 35;
             this.btnVolver.UseVisualStyleBackColor = true;
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Font = new System.Drawing.Font("Bahnschrift Condensed", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(618, 771);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(205, 52);
+            this.btnCancelar.TabIndex = 43;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            // 
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Bahnschrift Condensed", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(40, 742);
+            this.btnGuardar.Location = new System.Drawing.Point(39, 771);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(259, 69);
+            this.btnGuardar.Size = new System.Drawing.Size(191, 52);
             this.btnGuardar.TabIndex = 43;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -314,14 +326,14 @@
             this.dgvDocumentos.Size = new System.Drawing.Size(716, 37);
             this.dgvDocumentos.TabIndex = 0;
             // 
-            // dtFnacimiento
+            // dtpFechaNacimiento
             // 
-            this.dtFnacimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtFnacimiento.Location = new System.Drawing.Point(334, 297);
-            this.dtFnacimiento.Margin = new System.Windows.Forms.Padding(4);
-            this.dtFnacimiento.Name = "dtFnacimiento";
-            this.dtFnacimiento.Size = new System.Drawing.Size(489, 30);
-            this.dtFnacimiento.TabIndex = 31;
+            this.dtpFechaNacimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaNacimiento.Location = new System.Drawing.Point(334, 297);
+            this.dtpFechaNacimiento.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
+            this.dtpFechaNacimiento.Size = new System.Drawing.Size(489, 30);
+            this.dtpFechaNacimiento.TabIndex = 31;
             // 
             // txtCiudad
             // 
@@ -332,14 +344,14 @@
             this.txtCiudad.Size = new System.Drawing.Size(489, 30);
             this.txtCiudad.TabIndex = 40;
             // 
-            // txtCodigoP
+            // txtCP
             // 
-            this.txtCodigoP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigoP.Location = new System.Drawing.Point(334, 568);
-            this.txtCodigoP.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCodigoP.Name = "txtCodigoP";
-            this.txtCodigoP.Size = new System.Drawing.Size(489, 30);
-            this.txtCodigoP.TabIndex = 39;
+            this.txtCP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCP.Location = new System.Drawing.Point(334, 568);
+            this.txtCP.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCP.Name = "txtCP";
+            this.txtCP.Size = new System.Drawing.Size(489, 30);
+            this.txtCP.TabIndex = 39;
             // 
             // txtNumero
             // 
@@ -377,23 +389,23 @@
             this.txtEmail.Size = new System.Drawing.Size(489, 30);
             this.txtEmail.TabIndex = 33;
             // 
-            // txtAmaterno
+            // txtApellidoMaterno
             // 
-            this.txtAmaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAmaterno.Location = new System.Drawing.Point(334, 243);
-            this.txtAmaterno.Margin = new System.Windows.Forms.Padding(4);
-            this.txtAmaterno.Name = "txtAmaterno";
-            this.txtAmaterno.Size = new System.Drawing.Size(489, 30);
-            this.txtAmaterno.TabIndex = 30;
+            this.txtApellidoMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtApellidoMaterno.Location = new System.Drawing.Point(334, 243);
+            this.txtApellidoMaterno.Margin = new System.Windows.Forms.Padding(4);
+            this.txtApellidoMaterno.Name = "txtApellidoMaterno";
+            this.txtApellidoMaterno.Size = new System.Drawing.Size(489, 30);
+            this.txtApellidoMaterno.TabIndex = 30;
             // 
-            // txtApaterno
+            // txtApellidoPaterno
             // 
-            this.txtApaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtApaterno.Location = new System.Drawing.Point(334, 189);
-            this.txtApaterno.Margin = new System.Windows.Forms.Padding(4);
-            this.txtApaterno.Name = "txtApaterno";
-            this.txtApaterno.Size = new System.Drawing.Size(489, 30);
-            this.txtApaterno.TabIndex = 28;
+            this.txtApellidoPaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtApellidoPaterno.Location = new System.Drawing.Point(334, 189);
+            this.txtApellidoPaterno.Margin = new System.Windows.Forms.Padding(4);
+            this.txtApellidoPaterno.Name = "txtApellidoPaterno";
+            this.txtApellidoPaterno.Size = new System.Drawing.Size(489, 30);
+            this.txtApellidoPaterno.TabIndex = 28;
             // 
             // txtNombre
             // 
@@ -403,16 +415,6 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(489, 30);
             this.txtNombre.TabIndex = 27;
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(63, 59);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(903, 28);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Completa el siguiente formulario para realizar tu proceso de inscripcion";
             // 
             // label15
             // 
@@ -524,90 +526,129 @@
             this.label1.TabIndex = 19;
             this.label1.Text = "Nombre(s):";
             // 
-            // panel5
+            // label12
             // 
-            this.panel5.Controls.Add(this.dataGridView1);
-            this.panel5.Location = new System.Drawing.Point(877, 514);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(749, 238);
-            this.panel5.TabIndex = 30;
+            this.label12.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(63, 722);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(263, 28);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "Semestre:";
             // 
-            // dataGridView1
+            // cbSemestre
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 20);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(716, 37);
-            this.dataGridView1.TabIndex = 0;
+            this.cbSemestre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSemestre.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSemestre.FormattingEnabled = true;
+            this.cbSemestre.Items.AddRange(new object[] {
+            "Aguascalientes",
+            "Baja California",
+            "Baja California Sur",
+            "Campeche ",
+            "Chiapas",
+            "Chihuahua",
+            "Ciudad de México ",
+            "Coahuila",
+            "Colima",
+            "Durango",
+            "Guanajuato",
+            "Guerrero",
+            "Hidalgo",
+            "Jalisco",
+            "México",
+            "Michoacán",
+            "Morelos",
+            "Nayarit",
+            "Nuevo León",
+            "Oaxaca",
+            "Puebla",
+            "Querétaro",
+            "Quintana Roo",
+            "San Luis Potosí   ",
+            "Sinaloa",
+            "Sonora",
+            "Tabasco",
+            "Tamaulipas",
+            "Tlaxcala",
+            "Veracruz",
+            "Yucatán",
+            "Zacatecas"});
+            this.cbSemestre.Location = new System.Drawing.Point(334, 723);
+            this.cbSemestre.Margin = new System.Windows.Forms.Padding(4);
+            this.cbSemestre.Name = "cbSemestre";
+            this.cbSemestre.Size = new System.Drawing.Size(489, 32);
+            this.cbSemestre.TabIndex = 41;
             // 
-            // label10
+            // dgvAlumnos
             // 
-            this.label10.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(872, 462);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(283, 28);
-            this.label10.TabIndex = 44;
-            this.label10.Text = "Horario";
+            this.dgvAlumnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAlumnos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvAlumnos.Location = new System.Drawing.Point(0, 86);
+            this.dgvAlumnos.Name = "dgvAlumnos";
+            this.dgvAlumnos.RowHeadersWidth = 51;
+            this.dgvAlumnos.RowTemplate.Height = 24;
+            this.dgvAlumnos.Size = new System.Drawing.Size(1835, 869);
+            this.dgvAlumnos.TabIndex = 5;
+            // 
+            // vScrollBar1
+            // 
+            this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.vScrollBar1.Location = new System.Drawing.Point(1740, 0);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(21, 836);
+            this.vScrollBar1.TabIndex = 45;
             // 
             // ctlConsultaAlumnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pnlEditarAlumno);
-            this.Controls.Add(this.dataListadoPersonal);
-            this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Controls.Add(this.dgvAlumnos);
+            this.Controls.Add(this.pnlBuscar);
+            this.Controls.Add(this.pnlEdicion);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ctlConsultaAlumnos";
             this.Size = new System.Drawing.Size(1835, 955);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataListadoPersonal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.pnlEditarAlumno.ResumeLayout(false);
-            this.pnlEditarAlumno.PerformLayout();
+            this.Load += new System.EventHandler(this.ctlConsultaAlumnos_Load);
+            this.pnlBuscar.ResumeLayout(false);
+            this.pnlBuscar.PerformLayout();
+            this.pnlEdicion.ResumeLayout(false);
+            this.pnlEdicion.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHorario)).EndInit();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDocumentos)).EndInit();
-            this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnos)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel pnlBuscar;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox txtBuscador;
-        private System.Windows.Forms.DataGridView dataListadoPersonal;
-        private System.Windows.Forms.DataGridViewImageColumn Eliminar;
-        private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.TextBox txtBusqueda;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.Panel pnlEditarAlumno;
+        private System.Windows.Forms.Panel pnlEdicion;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvHorario;
         private System.Windows.Forms.ComboBox cbEstado;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridView dgvDocumentos;
-        private System.Windows.Forms.DateTimePicker dtFnacimiento;
+        private System.Windows.Forms.DateTimePicker dtpFechaNacimiento;
         private System.Windows.Forms.TextBox txtCiudad;
-        private System.Windows.Forms.TextBox txtCodigoP;
+        private System.Windows.Forms.TextBox txtCP;
         private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.TextBox txtColonia;
         private System.Windows.Forms.TextBox txtCalle;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox txtAmaterno;
-        private System.Windows.Forms.TextBox txtApaterno;
+        private System.Windows.Forms.TextBox txtApellidoMaterno;
+        private System.Windows.Forms.TextBox txtApellidoPaterno;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
@@ -619,5 +660,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label lblBuscar;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cbSemestre;
+        private System.Windows.Forms.DataGridView dgvAlumnos;
+        private System.Windows.Forms.VScrollBar vScrollBar1;
     }
 }

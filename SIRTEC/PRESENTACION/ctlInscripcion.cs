@@ -1225,9 +1225,9 @@ namespace SIRTEC.PRESENTACION
                 return false;
             }
 
-            if (edad > 90)
+            if (edad > 99)
             {
-                MessageBox.Show("El alumno no puede tener más de 90 años para inscribirse.",
+                MessageBox.Show("El alumno no puede tener más de 99 años para inscribirse.",
                     "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }

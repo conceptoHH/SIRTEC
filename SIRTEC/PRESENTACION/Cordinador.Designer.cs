@@ -37,11 +37,11 @@
             this.pnlPadre = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnConsultaAlumnos = new System.Windows.Forms.Button();
             this.btnHorario = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btnAltaDocente = new System.Windows.Forms.Button();
-            this.btnConsultaAlumnos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.pnlPadre.SuspendLayout();
@@ -54,9 +54,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.Font = new System.Drawing.Font("Bahnschrift Condensed", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(245, 24);
+            this.label2.Location = new System.Drawing.Point(327, 30);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(763, 65);
+            this.label2.Size = new System.Drawing.Size(1017, 80);
             this.label2.TabIndex = 2;
             this.label2.Text = "Tecnológico Nacional de México";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -67,8 +68,9 @@
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(160, 139);
+            this.pictureBox1.Size = new System.Drawing.Size(213, 171);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
@@ -79,17 +81,19 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1184, 139);
+            this.panel1.Size = new System.Drawing.Size(1579, 171);
             this.panel1.TabIndex = 16;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(157)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 835);
+            this.panel2.Location = new System.Drawing.Point(0, 1028);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1184, 27);
+            this.panel2.Size = new System.Drawing.Size(1579, 33);
             this.panel2.TabIndex = 18;
             // 
             // label3
@@ -107,9 +111,10 @@
             // 
             this.pnlPadre.Controls.Add(this.label1);
             this.pnlPadre.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPadre.Location = new System.Drawing.Point(160, 139);
+            this.pnlPadre.Location = new System.Drawing.Point(213, 171);
+            this.pnlPadre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlPadre.Name = "pnlPadre";
-            this.pnlPadre.Size = new System.Drawing.Size(1024, 696);
+            this.pnlPadre.Size = new System.Drawing.Size(1366, 857);
             this.pnlPadre.TabIndex = 20;
             // 
             // label1
@@ -117,8 +122,9 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("Bahnschrift Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1024, 54);
+            this.label1.Size = new System.Drawing.Size(1366, 66);
             this.label1.TabIndex = 24;
             this.label1.Text = "Coordinador";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -131,19 +137,33 @@
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.btnAltaDocente);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 139);
+            this.panel3.Location = new System.Drawing.Point(0, 171);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(160, 696);
+            this.panel3.Size = new System.Drawing.Size(213, 857);
             this.panel3.TabIndex = 26;
+            // 
+            // btnConsultaAlumnos
+            // 
+            this.btnConsultaAlumnos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnConsultaAlumnos.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConsultaAlumnos.Location = new System.Drawing.Point(0, 492);
+            this.btnConsultaAlumnos.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnConsultaAlumnos.Name = "btnConsultaAlumnos";
+            this.btnConsultaAlumnos.Size = new System.Drawing.Size(213, 123);
+            this.btnConsultaAlumnos.TabIndex = 27;
+            this.btnConsultaAlumnos.Text = "Consulta Alumnos";
+            this.btnConsultaAlumnos.UseVisualStyleBackColor = true;
+            this.btnConsultaAlumnos.Click += new System.EventHandler(this.btnConsultaAlumnos_Click);
             // 
             // btnHorario
             // 
             this.btnHorario.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnHorario.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHorario.Location = new System.Drawing.Point(0, 300);
-            this.btnHorario.Margin = new System.Windows.Forms.Padding(4);
+            this.btnHorario.Location = new System.Drawing.Point(0, 369);
+            this.btnHorario.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnHorario.Name = "btnHorario";
-            this.btnHorario.Size = new System.Drawing.Size(160, 100);
+            this.btnHorario.Size = new System.Drawing.Size(213, 123);
             this.btnHorario.TabIndex = 26;
             this.btnHorario.Text = "Horarios y Materias";
             this.btnHorario.UseVisualStyleBackColor = true;
@@ -153,10 +173,10 @@
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
             this.button1.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(0, 200);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(0, 246);
+            this.button1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 100);
+            this.button1.Size = new System.Drawing.Size(213, 123);
             this.button1.TabIndex = 25;
             this.button1.Text = "Habilitar Correcion de Calificaciones";
             this.button1.UseVisualStyleBackColor = true;
@@ -165,10 +185,10 @@
             // 
             this.button3.Dock = System.Windows.Forms.DockStyle.Top;
             this.button3.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(0, 100);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Location = new System.Drawing.Point(0, 123);
+            this.button3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(160, 100);
+            this.button3.Size = new System.Drawing.Size(213, 123);
             this.button3.TabIndex = 24;
             this.button3.Text = "Constancias ";
             this.button3.UseVisualStyleBackColor = true;
@@ -178,35 +198,24 @@
             this.btnAltaDocente.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAltaDocente.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAltaDocente.Location = new System.Drawing.Point(0, 0);
-            this.btnAltaDocente.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAltaDocente.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnAltaDocente.Name = "btnAltaDocente";
-            this.btnAltaDocente.Size = new System.Drawing.Size(160, 100);
+            this.btnAltaDocente.Size = new System.Drawing.Size(213, 123);
             this.btnAltaDocente.TabIndex = 22;
             this.btnAltaDocente.Text = "Alta Docente";
             this.btnAltaDocente.UseVisualStyleBackColor = true;
             this.btnAltaDocente.Click += new System.EventHandler(this.btnAltaDocente_Click);
             // 
-            // btnConsultaAlumnos
-            // 
-            this.btnConsultaAlumnos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnConsultaAlumnos.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConsultaAlumnos.Location = new System.Drawing.Point(0, 400);
-            this.btnConsultaAlumnos.Margin = new System.Windows.Forms.Padding(4);
-            this.btnConsultaAlumnos.Name = "btnConsultaAlumnos";
-            this.btnConsultaAlumnos.Size = new System.Drawing.Size(160, 100);
-            this.btnConsultaAlumnos.TabIndex = 27;
-            this.btnConsultaAlumnos.Text = "Consulta Alumnos";
-            this.btnConsultaAlumnos.UseVisualStyleBackColor = true;
-            // 
             // Cordinador
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 862);
+            this.ClientSize = new System.Drawing.Size(1579, 1061);
             this.Controls.Add(this.pnlPadre);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Cordinador";
             this.Text = "Cordinador";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
