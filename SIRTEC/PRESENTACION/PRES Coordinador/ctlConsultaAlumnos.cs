@@ -290,10 +290,8 @@ namespace SIRTEC.PRESENTACION.PRES_Coordinador
                         txtNumero.Text = reader["num_exterior"].ToString();
                         txtCiudad.Text = reader["ciudad"].ToString();
                         cbEstado.Text = reader["estado"].ToString();
-                        cbSemestre.Text = reader["n_semestre"].ToString();
 
                         // Guardar el ID del semestre
-                        cbSemestre.Tag = reader["id_semestre"];
                     }
                     reader.Close();
                 }
@@ -416,41 +414,6 @@ namespace SIRTEC.PRESENTACION.PRES_Coordinador
             // Asignar al combobox
             cbEstado.Items.AddRange(estados);
 
-            // Cargar semestres
-            CargarSemestres();
-        }
-
-        private void CargarSemestres()
-        {
-            try
-            {
-                CONEXIONMAESTRA.abrir();
-                string consulta = "SELECT id_semestre, n_semestre FROM Semestre ORDER BY n_semestre";
-
-                using (SqlCommand cmd = new SqlCommand(consulta, CONEXIONMAESTRA.conectar))
-                {
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    // Limpiar items existentes
-                    cbSemestre.Items.Clear();
-                    cbSemestre.DisplayMember = "Text";
-                    cbSemestre.ValueMember = "Value";
-
-                    // Agregar semestres al combobox
-                    while (reader.Read())
-                    {
-                        cbSemestre.Items.Add(new { Text = reader["n_semestre"].ToString(), Value = reader["id_semestre"] });
-                    }
-                    reader.Close();
-                }
-
-                CONEXIONMAESTRA.cerrar();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar semestres: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                CONEXIONMAESTRA.cerrar();
-            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -465,7 +428,7 @@ namespace SIRTEC.PRESENTACION.PRES_Coordinador
         {
             // Validar que los campos obligatorios no estén vacíos
             if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtApellidoPaterno.Text) ||
-                string.IsNullOrEmpty(txtEmail.Text) || cbSemestre.SelectedIndex == -1)
+                string.IsNullOrEmpty(txtEmail.Text))
             {
                 MessageBox.Show("Por favor complete los campos obligatorios.", "Datos incompletos",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -520,10 +483,7 @@ namespace SIRTEC.PRESENTACION.PRES_Coordinador
                     cmd.Parameters.AddWithValue("@estado", cbEstado.Text);
 
                     // Obtener id_semestre del combobox
-                    dynamic selectedItem = cbSemestre.SelectedItem;
-                    int idSemestre = selectedItem != null ? Convert.ToInt32(selectedItem.Value) : Convert.ToInt32(cbSemestre.Tag);
 
-                    cmd.Parameters.AddWithValue("@id_semestre", idSemestre);
                     cmd.Parameters.AddWithValue("@id_alumno", idAlumnoSeleccionado);
 
                     cmd.ExecuteNonQuery();
