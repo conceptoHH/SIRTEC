@@ -42,7 +42,6 @@
             this.dgvHorario = new System.Windows.Forms.DataGridView();
             this.cbSemestre = new System.Windows.Forms.ComboBox();
             this.cbEstado = new System.Windows.Forms.ComboBox();
-            this.btnVolver = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -153,7 +152,6 @@
             this.pnlEdicion.Controls.Add(this.panel5);
             this.pnlEdicion.Controls.Add(this.cbSemestre);
             this.pnlEdicion.Controls.Add(this.cbEstado);
-            this.pnlEdicion.Controls.Add(this.btnVolver);
             this.pnlEdicion.Controls.Add(this.btnCancelar);
             this.pnlEdicion.Controls.Add(this.btnGuardar);
             this.pnlEdicion.Controls.Add(this.label7);
@@ -187,14 +185,6 @@
             this.pnlEdicion.TabIndex = 4;
             this.pnlEdicion.Visible = false;
             // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.vScrollBar1.Location = new System.Drawing.Point(1300, 0);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(21, 679);
-            this.vScrollBar1.TabIndex = 45;
-            // 
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -215,55 +205,12 @@
             // dgvHorario
             // 
             this.dgvHorario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHorario.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvHorario.Location = new System.Drawing.Point(0, 0);
+            this.dgvHorario.Location = new System.Drawing.Point(16, 20);
+            this.dgvHorario.Margin = new System.Windows.Forms.Padding(4);
             this.dgvHorario.Name = "dgvHorario";
             this.dgvHorario.RowHeadersWidth = 51;
-            this.dgvHorario.Size = new System.Drawing.Size(562, 193);
+            this.dgvHorario.Size = new System.Drawing.Size(716, 37);
             this.dgvHorario.TabIndex = 0;
-            // 
-            // cbSemestre
-            // 
-            this.cbSemestre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSemestre.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSemestre.FormattingEnabled = true;
-            this.cbSemestre.Items.AddRange(new object[] {
-            "Aguascalientes",
-            "Baja California",
-            "Baja California Sur",
-            "Campeche ",
-            "Chiapas",
-            "Chihuahua",
-            "Ciudad de México ",
-            "Coahuila",
-            "Colima",
-            "Durango",
-            "Guanajuato",
-            "Guerrero",
-            "Hidalgo",
-            "Jalisco",
-            "México",
-            "Michoacán",
-            "Morelos",
-            "Nayarit",
-            "Nuevo León",
-            "Oaxaca",
-            "Puebla",
-            "Querétaro",
-            "Quintana Roo",
-            "San Luis Potosí   ",
-            "Sinaloa",
-            "Sonora",
-            "Tabasco",
-            "Tamaulipas",
-            "Tlaxcala",
-            "Veracruz",
-            "Yucatán",
-            "Zacatecas"});
-            this.cbSemestre.Location = new System.Drawing.Point(250, 587);
-            this.cbSemestre.Name = "cbSemestre";
-            this.cbSemestre.Size = new System.Drawing.Size(368, 27);
-            this.cbSemestre.TabIndex = 41;
             // 
             // cbEstado
             // 
@@ -316,10 +263,10 @@
             this.btnVolver.FlatAppearance.BorderSize = 0;
             this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVolver.Font = new System.Drawing.Font("Bahnschrift Condensed", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolver.Location = new System.Drawing.Point(1220, 6);
-            this.btnVolver.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnVolver.Location = new System.Drawing.Point(1627, 7);
+            this.btnVolver.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(70, 65);
+            this.btnVolver.Size = new System.Drawing.Size(93, 80);
             this.btnVolver.TabIndex = 35;
             this.btnVolver.UseVisualStyleBackColor = true;
             // 
@@ -333,6 +280,7 @@
             this.btnCancelar.TabIndex = 43;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -344,6 +292,7 @@
             this.btnGuardar.TabIndex = 43;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // label7
             // 
@@ -365,11 +314,11 @@
             // dgvDocumentos
             // 
             this.dgvDocumentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDocumentos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDocumentos.Location = new System.Drawing.Point(0, 0);
+            this.dgvDocumentos.Location = new System.Drawing.Point(16, 20);
+            this.dgvDocumentos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDocumentos.Name = "dgvDocumentos";
             this.dgvDocumentos.RowHeadersWidth = 51;
-            this.dgvDocumentos.Size = new System.Drawing.Size(562, 193);
+            this.dgvDocumentos.Size = new System.Drawing.Size(716, 37);
             this.dgvDocumentos.TabIndex = 0;
             // 
             // dtpFechaNacimiento
@@ -451,15 +400,6 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(368, 26);
             this.txtNombre.TabIndex = 27;
-            // 
-            // label12
-            // 
-            this.label12.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(47, 587);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(197, 23);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "Semestre:";
             // 
             // label15
             // 
@@ -606,7 +546,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.DataGridView dgvHorario;
         private System.Windows.Forms.ComboBox cbEstado;
-        private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel4;

@@ -552,6 +552,7 @@ namespace SIRTEC.PRESENTACION.PRES_Coordinador
             btnBuscar.Visible = true;
             txtBusqueda.Visible = true;
             lblBuscar.Visible = true;
+            pnlBuscar.Visible = true;
             // Recargar datos
             CargarAlumnos();
             // Limpiar selección
