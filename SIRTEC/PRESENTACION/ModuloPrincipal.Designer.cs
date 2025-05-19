@@ -121,6 +121,7 @@
             this.btnReinsc.TabIndex = 8;
             this.btnReinsc.Text = "Reinscripción";
             this.btnReinsc.UseVisualStyleBackColor = true;
+            this.btnReinsc.Click += new System.EventHandler(this.btnReinsc_Click);
             // 
             // label2
             // 
@@ -150,6 +151,7 @@
             this.btnDocentes.TabIndex = 0;
             this.btnDocentes.Text = "Docentes";
             this.btnDocentes.UseVisualStyleBackColor = true;
+            this.btnDocentes.Click += new System.EventHandler(this.btnDocentes_Click);
             // 
             // btnInsc
             // 

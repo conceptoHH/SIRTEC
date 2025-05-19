@@ -166,6 +166,7 @@
   <ItemGroup>
     <Compile Include="DATOS\CONEXIONMAESTRA.cs" />
     <Compile Include="DATOS\Dusuarios.cs" />
+    <Compile Include="DATOS\UsuarioActual.cs" />
     <Compile Include="LOGICA\Lcoordinador.cs" />
     <Compile Include="LOGICA\Ldocumentos.cs" />
     <Compile Include="LOGICA\Lusuarios.cs" />
@@ -223,6 +224,12 @@
     <Compile Include="PRESENTACION\PRES Coordinador\ctlConsultaAlumnos.Designer.cs">
       <DependentUpon>ctlConsultaAlumnos.cs</DependentUpon>
     </Compile>
+    <Compile Include="PRESENTACION\PRES_Docentes\calificaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PRESENTACION\PRES_Docentes\calificaciones.Designer.cs">
+      <DependentUpon>calificaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="PRESENTACION\Reinscripcion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -257,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PRESENTACION\PRES Coordinador\ctlConsultaAlumnos.resx">
       <DependentUpon>ctlConsultaAlumnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PRESENTACION\PRES_Docentes\calificaciones.resx">
+      <DependentUpon>calificaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PRESENTACION\Reinscripcion.resx">
       <DependentUpon>Reinscripcion.cs</DependentUpon>

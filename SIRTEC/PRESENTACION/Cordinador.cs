@@ -112,5 +112,24 @@ namespace SIRTEC.PRESENTACION
                 }
             };
         }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            // Preguntar al usuario si realmente desea volver al menú principal
+            DialogResult resultado = MessageBox.Show(
+                "¿Está seguro que desea volver al menú principal?",
+                "Confirmar",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                // Cerrar este formulario (Cordinador)
+                // Esto activará el evento FormClosed del formulario
+                // que se maneja desde ModuloPrincipal.cs para mostrar
+                // correctamente el formulario principal
+                this.Close();
+            }
+        }
     }
 }

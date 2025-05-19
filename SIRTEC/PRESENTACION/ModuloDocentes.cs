@@ -31,5 +31,11 @@ namespace SIRTEC.PRESENTACION
         {
 
         }
+
+        private void btnSubirCal_Click(object sender, EventArgs e)
+        {
+            PRES_Docentes.calificaciones formCalificaciones = new PRES_Docentes.calificaciones();
+            formCalificaciones.ShowDialog();
+        }
     }
 }

@@ -163,12 +163,7 @@ namespace SIRTEC.PRESENTACION.PRES_Coordinador
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            // Simplemente eliminar este control del panel padre
-            if (this.Parent != null)
-            {
-                this.Parent.Controls.Remove(this);
-                this.Dispose();
-            }
+
         }
 
         private void ctlAltaDocente_Load(object sender, EventArgs e)

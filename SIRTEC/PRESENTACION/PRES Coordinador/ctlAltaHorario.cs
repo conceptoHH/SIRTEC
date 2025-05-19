@@ -63,6 +63,13 @@ namespace SIRTEC.PRESENTACION.PRES_Coordinador
                 return false;
             }
 
+            if (comboBox1.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor seleccione un grupo", "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                comboBox1.Focus();
+                return false;
+            }
+
             if (dgvVerDocentes.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Por favor seleccione un docente", "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -89,8 +96,8 @@ namespace SIRTEC.PRESENTACION.PRES_Coordinador
                 int idMateria = Convert.ToInt32(cmdMaxId.ExecuteScalar());
 
                 // Insertamos la nueva materia
-                string consultaMateria = "INSERT INTO Materias(id_materia, n_materia, hora, aula, id_docente) " +
-                                         "VALUES (@id_materia, @n_materia, @hora, @aula, @id_docente)";
+                string consultaMateria = "INSERT INTO Materias(id_materia, n_materia, hora, aula, id_docente, grupo) " +
+                                         "VALUES (@id_materia, @n_materia, @hora, @aula, @id_docente, @grupo)";
 
                 using (SqlCommand cmdMateria = new SqlCommand(consultaMateria, CONEXIONMAESTRA.conectar))
                 {
@@ -99,6 +106,7 @@ namespace SIRTEC.PRESENTACION.PRES_Coordinador
                     cmdMateria.Parameters.AddWithValue("@hora", dtpHora.Value.TimeOfDay);
                     cmdMateria.Parameters.AddWithValue("@aula", txtAula.Text);
                     cmdMateria.Parameters.AddWithValue("@id_docente", idDocente);
+                    cmdMateria.Parameters.AddWithValue("@grupo", comboBox1.SelectedItem.ToString());
                     cmdMateria.ExecuteNonQuery();
                 }
 
@@ -169,12 +177,7 @@ namespace SIRTEC.PRESENTACION.PRES_Coordinador
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            // Simplemente eliminar este control del panel padre
-            if (this.Parent != null)
-            {
-                this.Parent.Controls.Remove(this);
-                this.Dispose();
-            }
+
         }
     }
 }

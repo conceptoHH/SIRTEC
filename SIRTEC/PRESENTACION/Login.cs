@@ -103,7 +103,7 @@ namespace SIRTEC.PRESENTACION
             if (!string.IsNullOrEmpty(tipoUsuario))
             {
                 // Credenciales válidas, redirigir al usuario a la siguiente pantalla
-                MessageBox.Show("Inicio de sesión exitoso", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Inicio de sesión exitoso. ID específico: {UsuarioActual.IdEspecifico}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Pasar el tipo de usuario al formulario principal
                 ModuloPrincipal principal = new ModuloPrincipal(tipoUsuario);
@@ -125,7 +125,17 @@ namespace SIRTEC.PRESENTACION
             {
                 CONEXIONMAESTRA.abrir();
                 {
-                    string consulta = "SELECT tipo_usuario FROM Usuarios WHERE username = @username AND password = @password";
+                    string consulta = @"SELECT 
+                                        u.id_usuarios,
+                                        u.tipo_usuario, 
+                                        u.username,
+                                        CASE 
+                                            WHEN u.tipo_usuario = 'docente' THEN u.id_docente 
+                                            WHEN u.tipo_usuario = 'alumno' THEN u.id_alumno 
+                                            ELSE -1 
+                                        END AS id_especifico 
+                                        FROM Usuarios u 
+                                        WHERE u.username = @username AND u.password = @password";
 
                     using (SqlCommand cmd = new SqlCommand(consulta, CONEXIONMAESTRA.conectar))
                     {
@@ -136,7 +146,17 @@ namespace SIRTEC.PRESENTACION
                         {
                             if (reader.Read())
                             {
+                                // Obtener los datos del usuario
+                                int idUsuario = Convert.ToInt32(reader["id_usuarios"]);
                                 tipoUsuario = reader["tipo_usuario"].ToString();
+                                string nombreUsuario = reader["username"].ToString();
+                                int idEspecifico = reader["id_especifico"] != DBNull.Value ? Convert.ToInt32(reader["id_especifico"]) : -1;
+
+                                // Guardar los datos en la clase estática
+                                UsuarioActual.IdUsuario = idUsuario;
+                                UsuarioActual.TipoUsuario = tipoUsuario;
+                                UsuarioActual.NombreUsuario = nombreUsuario;
+                                UsuarioActual.IdEspecifico = idEspecifico;
                             }
                         }
                     }

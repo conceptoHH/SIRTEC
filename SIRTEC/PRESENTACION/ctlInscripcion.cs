@@ -872,9 +872,9 @@ namespace SIRTEC.PRESENTACION
                         }
                     }
 
-                    // Obtener el horario del alumno
+                    // Obtener el horario del alumno - AHORA INCLUYE GRUPO
                     string queryHorario = @"
-                        SELECT M.n_materia, M.hora, M.aula, D.nombre AS docente
+                        SELECT M.n_materia, M.hora, M.aula, D.nombre AS docente, M.grupo
                         FROM Horarios H
                         INNER JOIN Materias M ON H.id_materia = M.id_materia
                         LEFT JOIN Docentes D ON M.id_docente = D.id_docente
@@ -899,7 +899,7 @@ namespace SIRTEC.PRESENTACION
                     // Crear un formulario para mostrar la vista previa
                     Form formVistaPrevia = new Form();
                     formVistaPrevia.Text = "Vista Previa de Horario";
-                    formVistaPrevia.Size = new Size(800, 600);
+                    formVistaPrevia.Size = new Size(900, 600); // Aumentado el ancho para acomodar la nueva columna
                     formVistaPrevia.StartPosition = FormStartPosition.CenterScreen;
                     formVistaPrevia.MinimizeBox = false;
                     formVistaPrevia.MaximizeBox = false;
@@ -922,7 +922,7 @@ namespace SIRTEC.PRESENTACION
                     // Añadir DataGridView con el horario
                     DataGridView dgvHorario = new DataGridView();
                     dgvHorario.DataSource = dtHorario;
-                    dgvHorario.Size = new Size(750, 400);
+                    dgvHorario.Size = new Size(850, 400); // Aumentado el ancho
                     dgvHorario.Location = new Point(20, 100);
                     dgvHorario.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     dgvHorario.ReadOnly = true;
@@ -961,11 +961,6 @@ namespace SIRTEC.PRESENTACION
         {
             try
             {
-                // Primero asegúrate de tener las referencias en la parte superior del archivo:
-                // using PdfSharp.Pdf;
-                // using PdfSharp.Drawing;
-                // using PdfSharp.Drawing.Layout;
-
                 SaveFileDialog saveFileDialog = new SaveFileDialog
                 {
                     Filter = "Archivo PDF|*.pdf",
@@ -1007,15 +1002,16 @@ namespace SIRTEC.PRESENTACION
                 gfx.DrawString($"Semestre: {numSemestre}", fontSubtitulo, PdfSharp.Drawing.XBrushes.Black, 50, 140);
                 gfx.DrawString($"Fecha de impresión: {DateTime.Now:dd/MM/yyyy}", fontSubtitulo, PdfSharp.Drawing.XBrushes.Black, 50, 160);
 
-                // Dibujar tabla de horario
+                // Dibujar tabla de horario con una columna adicional para grupo
                 double startY = 200;
                 double rowHeight = 30;
-                double colWidth1 = 200; // Materia
-                double colWidth2 = 100; // Hora
-                double colWidth3 = 80;  // Aula
-                double colWidth4 = 150; // Docente
-                double tableWidth = colWidth1 + colWidth2 + colWidth3 + colWidth4;
-                double tableX = 50;
+                double colWidth1 = 180; // Materia - reducido ligeramente
+                double colWidth2 = 70;  // Hora - reducido
+                double colWidth3 = 60;  // Aula - reducido
+                double colWidth4 = 130; // Docente - reducido
+                double colWidth5 = 70;  // Grupo - nueva columna
+                double tableWidth = colWidth1 + colWidth2 + colWidth3 + colWidth4 + colWidth5;
+                double tableX = 40; // Movido un poco a la izquierda para acomodar la tabla más ancha
 
                 // Linea superior de la tabla
                 gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
@@ -1027,6 +1023,7 @@ namespace SIRTEC.PRESENTACION
                 gfx.DrawRectangle(PdfSharp.Drawing.XBrushes.LightGray, headerRect);
                 gfx.DrawRectangle(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1), headerRect);
 
+                // Líneas verticales para separar encabezados
                 gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
                             tableX + colWidth1, startY,
                             tableX + colWidth1, startY + rowHeight);
@@ -1039,6 +1036,11 @@ namespace SIRTEC.PRESENTACION
                             tableX + colWidth1 + colWidth2 + colWidth3, startY,
                             tableX + colWidth1 + colWidth2 + colWidth3, startY + rowHeight);
 
+                gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                            tableX + colWidth1 + colWidth2 + colWidth3 + colWidth4, startY,
+                            tableX + colWidth1 + colWidth2 + colWidth3 + colWidth4, startY + rowHeight);
+
+                // Textos de encabezados
                 gfx.DrawString("Materia", fontTablaHeader, PdfSharp.Drawing.XBrushes.Black,
                               tableX + 5, startY + 20);
 
@@ -1050,6 +1052,9 @@ namespace SIRTEC.PRESENTACION
 
                 gfx.DrawString("Docente", fontTablaHeader, PdfSharp.Drawing.XBrushes.Black,
                               tableX + colWidth1 + colWidth2 + colWidth3 + 5, startY + 20);
+
+                gfx.DrawString("Grupo", fontTablaHeader, PdfSharp.Drawing.XBrushes.Black,
+                              tableX + colWidth1 + colWidth2 + colWidth3 + colWidth4 + 5, startY + 20);
 
                 startY += rowHeight;
 
@@ -1079,6 +1084,10 @@ namespace SIRTEC.PRESENTACION
                                 tableX + colWidth1 + colWidth2 + colWidth3, startY + rowHeight);
 
                     gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                                tableX + colWidth1 + colWidth2 + colWidth3 + colWidth4, startY,
+                                tableX + colWidth1 + colWidth2 + colWidth3 + colWidth4, startY + rowHeight);
+
+                    gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
                                 tableX + tableWidth, startY,
                                 tableX + tableWidth, startY + rowHeight);
 
@@ -1087,10 +1096,11 @@ namespace SIRTEC.PRESENTACION
                     string hora = row["hora"].ToString();
                     string aula = row["aula"].ToString();
                     string docente = row["docente"] != DBNull.Value ? row["docente"].ToString() : "";
+                    string grupo = row["grupo"] != DBNull.Value ? row["grupo"].ToString() : "";
 
                     // Limitar texto si es demasiado largo
-                    if (materia.Length > 35) materia = materia.Substring(0, 32) + "...";
-                    if (docente.Length > 25) docente = docente.Substring(0, 22) + "...";
+                    if (materia.Length > 30) materia = materia.Substring(0, 27) + "...";
+                    if (docente.Length > 20) docente = docente.Substring(0, 17) + "...";
 
                     gfx.DrawString(materia, fontRegular, PdfSharp.Drawing.XBrushes.Black,
                                   tableX + 5, startY + 20);
@@ -1103,6 +1113,9 @@ namespace SIRTEC.PRESENTACION
 
                     gfx.DrawString(docente, fontRegular, PdfSharp.Drawing.XBrushes.Black,
                                   tableX + colWidth1 + colWidth2 + colWidth3 + 5, startY + 20);
+
+                    gfx.DrawString(grupo, fontRegular, PdfSharp.Drawing.XBrushes.Black,
+                                  tableX + colWidth1 + colWidth2 + colWidth3 + colWidth4 + 5, startY + 20);
 
                     startY += rowHeight;
 
@@ -1129,6 +1142,7 @@ namespace SIRTEC.PRESENTACION
                         gfx.DrawRectangle(PdfSharp.Drawing.XBrushes.LightGray, headerRect);
                         gfx.DrawRectangle(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1), headerRect);
 
+                        // Líneas verticales para separar encabezados
                         gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
                                     tableX + colWidth1, startY,
                                     tableX + colWidth1, startY + rowHeight);
@@ -1141,6 +1155,11 @@ namespace SIRTEC.PRESENTACION
                                     tableX + colWidth1 + colWidth2 + colWidth3, startY,
                                     tableX + colWidth1 + colWidth2 + colWidth3, startY + rowHeight);
 
+                        gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                                    tableX + colWidth1 + colWidth2 + colWidth3 + colWidth4, startY,
+                                    tableX + colWidth1 + colWidth2 + colWidth3 + colWidth4, startY + rowHeight);
+
+                        // Textos de encabezados
                         gfx.DrawString("Materia", fontTablaHeader, PdfSharp.Drawing.XBrushes.Black,
                                       tableX + 5, startY + 20);
 
@@ -1152,6 +1171,9 @@ namespace SIRTEC.PRESENTACION
 
                         gfx.DrawString("Docente", fontTablaHeader, PdfSharp.Drawing.XBrushes.Black,
                                       tableX + colWidth1 + colWidth2 + colWidth3 + 5, startY + 20);
+
+                        gfx.DrawString("Grupo", fontTablaHeader, PdfSharp.Drawing.XBrushes.Black,
+                                      tableX + colWidth1 + colWidth2 + colWidth3 + colWidth4 + 5, startY + 20);
 
                         startY += rowHeight;
                     }
@@ -1610,30 +1632,6 @@ namespace SIRTEC.PRESENTACION
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            DialogResult resultado = MessageBox.Show("¿Está seguro de cancelar el proceso de inscripción? Se perderán todos los datos no guardados y se eliminarán los documentos subidos.",
-                "Confirmar cancelación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (resultado == DialogResult.Yes)
-            {
-                // Eliminar documentos sin asociar
-                EliminarDocumentosSinAsociar();
-
-                // Limpiar formulario
-                LimpiarFormulario();
-
-                // Notificar al usuario
-                MessageBox.Show("El proceso de inscripción ha sido cancelado.",
-                    "Proceso cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Volver a la pantalla anterior
-                if (this.Parent != null)
-                {
-                    this.Parent.Controls.Remove(this);
-                    this.Dispose();
-                }
-            }
-        }
+        
     }
 }

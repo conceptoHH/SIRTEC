@@ -36,7 +36,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtContrasenaDoc = new System.Windows.Forms.TextBox();
             this.txtNomDoc = new System.Windows.Forms.TextBox();
-            this.btnVolver = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label3
@@ -70,7 +69,7 @@
             this.btnRegistrarDoc.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRegistrarDoc.Font = new System.Drawing.Font("Bahnschrift Condensed", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrarDoc.Location = new System.Drawing.Point(599, 641);
-            this.btnRegistrarDoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRegistrarDoc.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegistrarDoc.Name = "btnRegistrarDoc";
             this.btnRegistrarDoc.Size = new System.Drawing.Size(200, 87);
             this.btnRegistrarDoc.TabIndex = 30;
@@ -95,7 +94,7 @@
             this.txtUsuarioDoc.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUsuarioDoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuarioDoc.Location = new System.Drawing.Point(501, 384);
-            this.txtUsuarioDoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUsuarioDoc.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsuarioDoc.Name = "txtUsuarioDoc";
             this.txtUsuarioDoc.Size = new System.Drawing.Size(395, 34);
             this.txtUsuarioDoc.TabIndex = 26;
@@ -117,7 +116,7 @@
             this.txtContrasenaDoc.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtContrasenaDoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContrasenaDoc.Location = new System.Drawing.Point(501, 530);
-            this.txtContrasenaDoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContrasenaDoc.Margin = new System.Windows.Forms.Padding(4);
             this.txtContrasenaDoc.Name = "txtContrasenaDoc";
             this.txtContrasenaDoc.Size = new System.Drawing.Size(395, 34);
             this.txtContrasenaDoc.TabIndex = 27;
@@ -127,33 +126,16 @@
             this.txtNomDoc.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtNomDoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomDoc.Location = new System.Drawing.Point(501, 236);
-            this.txtNomDoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNomDoc.Margin = new System.Windows.Forms.Padding(4);
             this.txtNomDoc.Name = "txtNomDoc";
             this.txtNomDoc.Size = new System.Drawing.Size(395, 34);
             this.txtNomDoc.TabIndex = 25;
             this.txtNomDoc.Tag = "";
             // 
-            // btnVolver
-            // 
-            this.btnVolver.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVolver.BackgroundImage = global::SIRTEC.Properties.Resources.cancel;
-            this.btnVolver.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnVolver.FlatAppearance.BorderSize = 0;
-            this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVolver.Font = new System.Drawing.Font("Bahnschrift Condensed", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolver.Location = new System.Drawing.Point(1143, 81);
-            this.btnVolver.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(93, 80);
-            this.btnVolver.TabIndex = 33;
-            this.btnVolver.UseVisualStyleBackColor = true;
-            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
-            // 
             // ctlAltaDocente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRegistrarDoc);
@@ -181,6 +163,5 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtContrasenaDoc;
         private System.Windows.Forms.TextBox txtNomDoc;
-        private System.Windows.Forms.Button btnVolver;
     }
 }

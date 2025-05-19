@@ -84,21 +84,44 @@ namespace SIRTEC.PRESENTACION
             // Para esto, podemos manejar el evento Disposed del control
             ins.Disposed += (s, args) =>
             {
-                // Cuando el control se elimine, mostrar de nuevo todos los controles del login
-                foreach (Control control in pnlPadre.Controls)
-                {
-                    if (control != ins)
-                    {
-                        control.Visible = true;
-                    }
-                }
+                // Cuando el control se elimine, volver a aplicar la configuración según el tipo de usuario
+                ConfigurarVistaSegunTipoUsuario(_tipoUsuario);
+
             };
         }
 
         private void btnCoord_Click(object sender, EventArgs e)
         {
             Cordinador cordinador = new Cordinador();
+            cordinador.FormClosed += (s, args) =>
+            {
+                this.Show();
+                ConfigurarVistaSegunTipoUsuario(_tipoUsuario);
+            };
             cordinador.Show();
+            this.Hide();
+        }
+
+        private void btnDocentes_Click(object sender, EventArgs e)
+        {
+            ModuloDocentes doc = new ModuloDocentes();
+            doc.FormClosed += (s, args) => {
+                this.Show();
+                ConfigurarVistaSegunTipoUsuario(_tipoUsuario);
+            };
+            doc.Show();
+            this.Hide();
+
+        }
+
+        private void btnReinsc_Click(object sender, EventArgs e)
+        {
+            Reinscripcion doc = new Reinscripcion();
+            doc.FormClosed += (s, args) => {
+                this.Show();
+                ConfigurarVistaSegunTipoUsuario(_tipoUsuario);
+            };
+            doc.Show();
             this.Hide();
         }
     }
