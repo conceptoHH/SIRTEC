@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIRTEC", "SIRTEC\SIRTEC.csproj", "{51E48CC1-9DF0-41E0-B858-280C31C80F90}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SIRTEC.setup", "SIRTEC.setup\SIRTEC.setup.vdproj", "{A336A624-C31D-E7E9-E027-3EFCBD5B80F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIRTEC.SetupCustomActions", "SIRTEC.SetupCustomActions\SIRTEC.SetupCustomActions.csproj", "{0A1A2EDC-6291-4B19-A11A-2615B3C34A9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +19,17 @@ Global
 		{51E48CC1-9DF0-41E0-B858-280C31C80F90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51E48CC1-9DF0-41E0-B858-280C31C80F90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51E48CC1-9DF0-41E0-B858-280C31C80F90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A336A624-C31D-E7E9-E027-3EFCBD5B80F6}.Debug|Any CPU.ActiveCfg = Debug
+		{A336A624-C31D-E7E9-E027-3EFCBD5B80F6}.Release|Any CPU.ActiveCfg = Release
+		{0A1A2EDC-6291-4B19-A11A-2615B3C34A9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A1A2EDC-6291-4B19-A11A-2615B3C34A9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A1A2EDC-6291-4B19-A11A-2615B3C34A9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A1A2EDC-6291-4B19-A11A-2615B3C34A9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {03CCBAFF-4B3E-4DD2-84C8-C2C43A562508}
 	EndGlobalSection
 EndGlobal

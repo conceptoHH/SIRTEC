@@ -17,25 +17,37 @@ namespace SIRTEC.PRESENTACION
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSubirCal_Click(object sender, EventArgs e)
         {
             PRES_Docentes.calificaciones formCalificaciones = new PRES_Docentes.calificaciones();
             formCalificaciones.ShowDialog();
+        }
+        private void btnHorarios_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PRES_Docentes.DocenteHorario formHorario = new PRES_Docentes.DocenteHorario();
+                formHorario.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al abrir el horario: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnListas_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PRES_Docentes.DocenteListas formListas = new PRES_Docentes.DocenteListas();
+                formListas.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al abrir las listas: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

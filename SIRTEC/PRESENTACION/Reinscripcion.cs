@@ -624,11 +624,9 @@ namespace SIRTEC.PRESENTACION
             {
                 CONEXIONMAESTRA.abrir();
 
-                // Obtener hora de la materia nueva
-                string consultaHoraNueva = @"
-                        SELECT hora FROM Materias WHERE id_materia = @id_materia";
-
-                DateTime horaNueva = DateTime.MinValue;
+                // Obtener hora de la materia nueva (tipo time en SQL, TimeSpan en .NET)
+                string consultaHoraNueva = @"SELECT hora FROM Materias WHERE id_materia = @id_materia";
+                TimeSpan horaNueva = TimeSpan.Zero;
 
                 using (SqlCommand cmd = new SqlCommand(consultaHoraNueva, CONEXIONMAESTRA.conectar))
                 {
@@ -637,12 +635,12 @@ namespace SIRTEC.PRESENTACION
 
                     if (result != null && result != DBNull.Value)
                     {
-                        horaNueva = Convert.ToDateTime(result);
+                        horaNueva = (TimeSpan)result;
                     }
                 }
 
                 // Si no se pudo obtener la hora, no hay conflicto
-                if (horaNueva == DateTime.MinValue)
+                if (horaNueva == TimeSpan.Zero)
                 {
                     CONEXIONMAESTRA.cerrar();
                     return false;
@@ -653,10 +651,8 @@ namespace SIRTEC.PRESENTACION
 
                 foreach (int idMateria in materiasSeleccionadas)
                 {
-                    string consultaHora = @"
-                            SELECT hora FROM Materias WHERE id_materia = @id_materia";
-
-                    DateTime hora = DateTime.MinValue;
+                    string consultaHora = @"SELECT hora FROM Materias WHERE id_materia = @id_materia";
+                    TimeSpan hora = TimeSpan.Zero;
 
                     using (SqlCommand cmd = new SqlCommand(consultaHora, CONEXIONMAESTRA.conectar))
                     {
@@ -665,10 +661,10 @@ namespace SIRTEC.PRESENTACION
 
                         if (result != null && result != DBNull.Value)
                         {
-                            hora = Convert.ToDateTime(result);
+                            hora = (TimeSpan)result;
 
                             // Considerar conflicto si las horas son iguales
-                            if (hora.Hour == horaNueva.Hour && hora.Minute == horaNueva.Minute)
+                            if (hora == horaNueva)
                             {
                                 hayConflicto = true;
                                 break;
@@ -824,36 +820,7 @@ namespace SIRTEC.PRESENTACION
 
         private void btnConfirmarReinscripcion_Click(object sender, EventArgs e)
         {
-            if (!horarioValido)
-            {
-                MessageBox.Show("El horario no es válido. Verifica que no haya conflictos.",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
 
-            if (MessageBox.Show("¿Estás seguro de confirmar la reinscripción con las materias seleccionadas?",
-                "Confirmar reinscripción", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                if (RealizarReinscripcion())
-                {
-                    MessageBox.Show("Reinscripción completada con éxito. Se ha actualizado tu semestre y horario.",
-                        "Reinscripción exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // Habilitar botón de PDF
-                    btnGenerarPDF.Enabled = true;
-
-                    // Deshabilitar selección de materias
-                    tabMaterias.Enabled = false;
-                    tabControl.SelectedTab = tabHorario;
-
-                    // Actualizar estado
-                    lblEstadoGeneral.Text = "Estado: Reinscripción completada";
-                    lblEstadoGeneral.ForeColor = Color.Green;
-
-                    // Actualizar mensaje
-                    lblMensajes.Text = "¡Reinscripción completada con éxito! Puedes generar un PDF con tu horario.";
-                }
-            }
         }
 
         private bool RealizarReinscripcion()
@@ -964,41 +931,230 @@ namespace SIRTEC.PRESENTACION
             }
         }
 
+        // Reemplaza el método GenerarPDFHorario por el siguiente:
+
         private void GenerarPDFHorario(string rutaArchivo)
         {
-            // Aquí se implementaría la generación del PDF utilizando iTextSharp u otra biblioteca
-            // Por simplicidad, mostraremos un método básico de implementación
-
-            // Crear documento PDF
-            using (FileStream fs = new FileStream(rutaArchivo, FileMode.Create))
+            try
             {
-                using (StreamWriter writer = new StreamWriter(fs))
+                // Convertir el DataGridView a DataTable para reutilizar la lógica
+                DataTable dtHorario = new DataTable();
+                foreach (DataGridViewColumn col in dgvHorario.Columns)
                 {
-                    writer.WriteLine("========== HORARIO DE REINSCRIPCIÓN ==========");
-                    writer.WriteLine($"Alumno: {nombreCompleto}");
-                    writer.WriteLine($"Número de control: {numeroControl}");
-                    writer.WriteLine($"Semestre: {semestreActual + 1}°");
-                    writer.WriteLine($"Fecha: {DateTime.Now:dd/MM/yyyy}");
-                    writer.WriteLine("=========================================");
-                    writer.WriteLine();
-                    writer.WriteLine("MATERIAS INSCRITAS:");
-                    writer.WriteLine();
-
-                    // Escribir materias
-                    foreach (DataGridViewRow row in dgvHorario.Rows)
-                    {
-                        writer.WriteLine($"Materia: {row.Cells["Materia"].Value}");
-                        writer.WriteLine($"Hora: {row.Cells["Hora"].Value}");
-                        writer.WriteLine($"Aula: {row.Cells["Aula"].Value}");
-                        writer.WriteLine($"Docente: {row.Cells["Docente"].Value}");
-                        writer.WriteLine($"Tipo: {row.Cells["Tipo"].Value}");
-                        writer.WriteLine("----------------------------------------");
-                    }
-
-                    writer.WriteLine();
-                    writer.WriteLine("Este documento es un comprobante oficial de tu reinscripción.");
-                    writer.WriteLine("Departamento de Control Escolar - SIRTEC");
+                    dtHorario.Columns.Add(col.HeaderText, typeof(string));
                 }
+                foreach (DataGridViewRow row in dgvHorario.Rows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        DataRow dr = dtHorario.NewRow();
+                        for (int i = 0; i < dgvHorario.Columns.Count; i++)
+                        {
+                            dr[i] = row.Cells[i].Value?.ToString() ?? "";
+                        }
+                        dtHorario.Rows.Add(dr);
+                    }
+                }
+
+                // Crear documento PDF
+                PdfSharp.Pdf.PdfDocument document = new PdfSharp.Pdf.PdfDocument();
+                document.Info.Title = $"Horario de {nombreCompleto}";
+                document.Info.Author = "SIRTEC";
+                document.Info.Subject = "Horario Escolar";
+
+                // Agregar página
+                PdfSharp.Pdf.PdfPage page = document.AddPage();
+                page.Size = PdfSharp.PageSize.A4;
+
+                // Crear gráficos
+                PdfSharp.Drawing.XGraphics gfx = PdfSharp.Drawing.XGraphics.FromPdfPage(page);
+
+                // Definir fuentes
+                PdfSharp.Drawing.XFont fontTitulo = new PdfSharp.Drawing.XFont("Arial", 20, PdfSharp.Drawing.XFontStyleEx.Bold);
+                PdfSharp.Drawing.XFont fontSubtitulo = new PdfSharp.Drawing.XFont("Arial", 12, PdfSharp.Drawing.XFontStyleEx.Bold);
+                PdfSharp.Drawing.XFont fontRegular = new PdfSharp.Drawing.XFont("Arial", 10);
+                PdfSharp.Drawing.XFont fontTablaHeader = new PdfSharp.Drawing.XFont("Arial", 11, PdfSharp.Drawing.XFontStyleEx.Bold);
+                PdfSharp.Drawing.XFont fontFooter = new PdfSharp.Drawing.XFont("Arial", 8, PdfSharp.Drawing.XFontStyleEx.Italic);
+
+                // Dibujar título
+                gfx.DrawString("HORARIO DE CLASES", fontTitulo, PdfSharp.Drawing.XBrushes.Navy,
+                    new PdfSharp.Drawing.XRect(0, 40, page.Width, 30),
+                    PdfSharp.Drawing.XStringFormats.TopCenter);
+
+                // Dibujar información del alumno
+                gfx.DrawString($"Alumno: {nombreCompleto}", fontSubtitulo, PdfSharp.Drawing.XBrushes.Black, 50, 100);
+                gfx.DrawString($"Número de Control: {numeroControl}", fontSubtitulo, PdfSharp.Drawing.XBrushes.Black, 50, 120);
+                gfx.DrawString($"Semestre: {semestreActual + 1}", fontSubtitulo, PdfSharp.Drawing.XBrushes.Black, 50, 140);
+                gfx.DrawString($"Fecha de impresión: {DateTime.Now:dd/MM/yyyy}", fontSubtitulo, PdfSharp.Drawing.XBrushes.Black, 50, 160);
+
+                // Definir columnas de la tabla
+                double startY = 200;
+                double rowHeight = 30;
+                double colWidth1 = 180; // Materia
+                double colWidth2 = 70;  // Hora
+                double colWidth3 = 60;  // Aula
+                double colWidth4 = 130; // Docente
+                double colWidth5 = 90;  // Tipo
+                double tableWidth = colWidth1 + colWidth2 + colWidth3 + colWidth4 + colWidth5;
+                double tableX = 40;
+
+                // Línea superior de la tabla
+                gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                    tableX, startY,
+                    tableX + tableWidth, startY);
+
+                // Dibujar encabezados
+                PdfSharp.Drawing.XRect headerRect = new PdfSharp.Drawing.XRect(tableX, startY, tableWidth, rowHeight);
+                gfx.DrawRectangle(PdfSharp.Drawing.XBrushes.LightGray, headerRect);
+                gfx.DrawRectangle(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1), headerRect);
+
+                // Líneas verticales para separar encabezados
+                gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                    tableX + colWidth1, startY,
+                    tableX + colWidth1, startY + rowHeight);
+
+                gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                    tableX + colWidth1 + colWidth2, startY,
+                    tableX + colWidth1 + colWidth2, startY + rowHeight);
+
+                gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                    tableX + colWidth1 + colWidth2 + colWidth3, startY,
+                    tableX + colWidth1 + colWidth2 + colWidth3, startY + rowHeight);
+
+                gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                    tableX + colWidth1 + colWidth2 + colWidth3 + colWidth4, startY,
+                    tableX + colWidth1 + colWidth2 + colWidth3 + colWidth4, startY + rowHeight);
+
+                // Textos de encabezados
+                gfx.DrawString("Materia", fontTablaHeader, PdfSharp.Drawing.XBrushes.Black, tableX + 5, startY + 20);
+                gfx.DrawString("Hora", fontTablaHeader, PdfSharp.Drawing.XBrushes.Black, tableX + colWidth1 + 5, startY + 20);
+                gfx.DrawString("Aula", fontTablaHeader, PdfSharp.Drawing.XBrushes.Black, tableX + colWidth1 + colWidth2 + 5, startY + 20);
+                gfx.DrawString("Docente", fontTablaHeader, PdfSharp.Drawing.XBrushes.Black, tableX + colWidth1 + colWidth2 + colWidth3 + 5, startY + 20);
+                gfx.DrawString("Tipo", fontTablaHeader, PdfSharp.Drawing.XBrushes.Black, tableX + colWidth1 + colWidth2 + colWidth3 + colWidth4 + 5, startY + 20);
+
+                startY += rowHeight;
+
+                // Dibujar filas de datos
+                foreach (DataRow row in dtHorario.Rows)
+                {
+                    // Líneas horizontales
+                    gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                        tableX, startY,
+                        tableX + tableWidth, startY);
+
+                    // Líneas verticales
+                    gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                        tableX, startY,
+                        tableX, startY + rowHeight);
+
+                    gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                        tableX + colWidth1, startY,
+                        tableX + colWidth1, startY + rowHeight);
+
+                    gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                        tableX + colWidth1 + colWidth2, startY,
+                        tableX + colWidth1 + colWidth2, startY + rowHeight);
+
+                    gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                        tableX + colWidth1 + colWidth2 + colWidth3, startY,
+                        tableX + colWidth1 + colWidth2 + colWidth3, startY + rowHeight);
+
+                    gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                        tableX + colWidth1 + colWidth2 + colWidth3 + colWidth4, startY,
+                        tableX + colWidth1 + colWidth2 + colWidth3 + colWidth4, startY + rowHeight);
+
+                    gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                        tableX + tableWidth, startY,
+                        tableX + tableWidth, startY + rowHeight);
+
+                    // Datos de las celdas
+                    string materia = row["Materia"].ToString();
+                    string hora = row["Hora"].ToString();
+                    string aula = row["Aula"].ToString();
+                    string docente = row["Docente"] != DBNull.Value ? row["Docente"].ToString() : "";
+                    string tipo = row.Table.Columns.Contains("Tipo") ? row["Tipo"].ToString() : "";
+
+                    // Limitar texto si es demasiado largo
+                    if (materia.Length > 30) materia = materia.Substring(0, 27) + "...";
+                    if (docente.Length > 20) docente = docente.Substring(0, 17) + "...";
+
+                    gfx.DrawString(materia, fontRegular, PdfSharp.Drawing.XBrushes.Black, tableX + 5, startY + 20);
+                    gfx.DrawString(hora, fontRegular, PdfSharp.Drawing.XBrushes.Black, tableX + colWidth1 + 5, startY + 20);
+                    gfx.DrawString(aula, fontRegular, PdfSharp.Drawing.XBrushes.Black, tableX + colWidth1 + colWidth2 + 5, startY + 20);
+                    gfx.DrawString(docente, fontRegular, PdfSharp.Drawing.XBrushes.Black, tableX + colWidth1 + colWidth2 + colWidth3 + 5, startY + 20);
+                    gfx.DrawString(tipo, fontRegular, PdfSharp.Drawing.XBrushes.Black, tableX + colWidth1 + colWidth2 + colWidth3 + colWidth4 + 5, startY + 20);
+
+                    startY += rowHeight;
+
+                    // Si estamos cerca del final de la página, crear una nueva página
+                    if (startY > page.Height - 100)
+                    {
+                        // Línea final de la tabla en la página actual
+                        gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                            tableX, startY,
+                            tableX + tableWidth, startY);
+
+                        // Nueva página
+                        page = document.AddPage();
+                        gfx = PdfSharp.Drawing.XGraphics.FromPdfPage(page);
+                        startY = 50;
+
+                        // Encabezados en la nueva página
+                        gfx.DrawString("HORARIO DE CLASES (Continuación)", fontSubtitulo, PdfSharp.Drawing.XBrushes.Navy,
+                            new PdfSharp.Drawing.XRect(0, 20, page.Width, 20),
+                            PdfSharp.Drawing.XStringFormats.TopCenter);
+
+                        // Repetir encabezados de tabla
+                        headerRect = new PdfSharp.Drawing.XRect(tableX, startY, tableWidth, rowHeight);
+                        gfx.DrawRectangle(PdfSharp.Drawing.XBrushes.LightGray, headerRect);
+                        gfx.DrawRectangle(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1), headerRect);
+
+                        // Líneas verticales para separar encabezados
+                        gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                            tableX + colWidth1, startY,
+                            tableX + colWidth1, startY + rowHeight);
+
+                        gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                            tableX + colWidth1 + colWidth2, startY,
+                            tableX + colWidth1 + colWidth2, startY + rowHeight);
+
+                        gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                            tableX + colWidth1 + colWidth2 + colWidth3, startY,
+                            tableX + colWidth1 + colWidth2 + colWidth3, startY + rowHeight);
+
+                        gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                            tableX + colWidth1 + colWidth2 + colWidth3 + colWidth4, startY,
+                            tableX + colWidth1 + colWidth2 + colWidth3 + colWidth4, startY + rowHeight);
+
+                        // Textos de encabezados
+                        gfx.DrawString("Materia", fontTablaHeader, PdfSharp.Drawing.XBrushes.Black, tableX + 5, startY + 20);
+                        gfx.DrawString("Hora", fontTablaHeader, PdfSharp.Drawing.XBrushes.Black, tableX + colWidth1 + 5, startY + 20);
+                        gfx.DrawString("Aula", fontTablaHeader, PdfSharp.Drawing.XBrushes.Black, tableX + colWidth1 + colWidth2 + 5, startY + 20);
+                        gfx.DrawString("Docente", fontTablaHeader, PdfSharp.Drawing.XBrushes.Black, tableX + colWidth1 + colWidth2 + colWidth3 + 5, startY + 20);
+                        gfx.DrawString("Tipo", fontTablaHeader, PdfSharp.Drawing.XBrushes.Black, tableX + colWidth1 + colWidth2 + colWidth3 + colWidth4 + 5, startY + 20);
+
+                        startY += rowHeight;
+                    }
+                }
+
+                // Línea final de la tabla
+                gfx.DrawLine(new PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Black, 1),
+                    tableX, startY,
+                    tableX + tableWidth, startY);
+
+                // Pie de página
+                gfx.DrawString("Este documento es una representación oficial del horario escolar. Guárdelo para futuras referencias.",
+                    fontFooter, PdfSharp.Drawing.XBrushes.DarkGray,
+                    new PdfSharp.Drawing.XRect(0, page.Height - 50, page.Width, 20),
+                    PdfSharp.Drawing.XStringFormats.Center);
+
+                // Guardar el documento
+                document.Save(rutaArchivo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al generar el PDF: {ex.Message}\n\nDetalles: {ex.StackTrace}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

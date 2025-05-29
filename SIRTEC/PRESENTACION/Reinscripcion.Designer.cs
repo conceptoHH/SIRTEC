@@ -316,9 +316,11 @@
             // 
             // lblContadorMaterias
             // 
+            this.lblContadorMaterias.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.lblContadorMaterias.AutoSize = true;
             this.lblContadorMaterias.Font = new System.Drawing.Font("Bahnschrift", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContadorMaterias.Location = new System.Drawing.Point(17, 413);
+            this.lblContadorMaterias.Location = new System.Drawing.Point(-1, 499);
             this.lblContadorMaterias.Name = "lblContadorMaterias";
             this.lblContadorMaterias.Size = new System.Drawing.Size(300, 22);
             this.lblContadorMaterias.TabIndex = 2;
@@ -381,6 +383,7 @@
             this.btnConfirmarReinscripcion.TabIndex = 3;
             this.btnConfirmarReinscripcion.Text = "Confirmar Reinscripción";
             this.btnConfirmarReinscripcion.UseVisualStyleBackColor = false;
+            this.btnConfirmarReinscripcion.Click += new System.EventHandler(this.btnConfirmarReinscripcion_Click);
             // 
             // btnGenerarPDF
             // 
@@ -395,6 +398,7 @@
             this.btnGenerarPDF.TabIndex = 2;
             this.btnGenerarPDF.Text = "Generar PDF";
             this.btnGenerarPDF.UseVisualStyleBackColor = false;
+            this.btnGenerarPDF.Click += new System.EventHandler(this.btnGenerarPDF_Click);
             // 
             // pnlHorario
             // 
